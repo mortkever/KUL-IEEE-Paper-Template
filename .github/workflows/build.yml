@@ -1,0 +1,33 @@
+name: Build PDF
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up TeX Live
+        run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace registry.gitlab.com/islandoftex/images/texlive:latest /bin/bash -c "
+          pdflatex paper.tex &&
+          biber paper &&
+          pdflatex paper.tex
+        "
+
+      - name: Display Log
+        run: cat paper.log
+
+      - name: Upload PDF as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: paper-pdf
+          path: paper.pdf

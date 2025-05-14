@@ -11,6 +11,9 @@ citestyle=numeric-comp, maxnames=1]{biblatex}
 \addbibresource{bib.bib}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\usepackage[acronym,xindy]{glossaries}
+\makenoidxglossaries
+\input{abbreviations.tex}
 \begin{document}
 
 \title{Conference Paper Title*\\
@@ -84,6 +87,7 @@ and others are deliberate, using specifications that anticipate your paper
 as one part of the entire proceedings, and not as an independent document.
 Please do not revise any of the current designations.
 
+We test our abbreviation here. \gls{2d} technologies are awesome! The world should be more \gls{2d} in our opinion.
 \section{Prepare Your Paper Before Styling}
 Before you begin to format your paper, first write and save the content as a
 separate text file. Complete all content and organizational editing before

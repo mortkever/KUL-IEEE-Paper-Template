@@ -1,64 +1,815 @@
-@book{b1,
-  author  = {G. Eason and B. Noble and I. N. Sneddon},
-  title   = {On certain integrals of Lipschitz-Hankel type involving products of Bessel functions},
-  journal = {Philosophical Transactions of the Royal Society of London},
-  volume  = {A247},
-  pages   = {529--551},
-  year    = {1955},
-  month   = {apr}
+
+@misc{lefeuvre_sok_2024,
+	title = {{SoK}: Software Compartmentalization},
+	url = {http://arxiv.org/abs/2410.08434},
+	doi = {10.48550/arXiv.2410.08434},
+	shorttitle = {{SoK}},
+	abstract = {Decomposing large systems into smaller components with limited privileges has long been recognized as an effective means to minimize the impact of exploits. Despite historical roots, demonstrated benefits, and a plethora of research efforts in academia and industry, the compartmentalization of software is still not a mainstream practice. This paper investigates why, and how this status quo can be improved. Noting that existing approaches are fraught with inconsistencies in terminology and analytical methods, we propose a unified model for the systematic analysis, comparison, and directing of compartmentalization approaches. We use this model to review 211 research efforts and analyze 61 mainstream compartmentalized systems, confronting them to understand the limitations of both research and production works. Among others, our findings reveal that mainstream efforts largely rely on manual methods, custom abstractions, and legacy mechanisms, poles apart from recent research. We conclude with recommendations: compartmentalization should be solved holistically; progress is needed towards simplifying the definition of compartmentalization policies; towards better challenging our threat models in the light of confused deputies and hardware limitations; as well as towards bridging the gaps we pinpoint between research and mainstream needs. This paper not only maps the historical and current landscape of compartmentalization, but also sets forth a framework to foster their evolution and adoption.},
+	number = {{arXiv}:2410.08434},
+	publisher = {{arXiv}},
+	author = {Lefeuvre, Hugo and Dautenhahn, Nathan and Chisnall, David and Olivier, Pierre},
+	urldate = {2025-04-12},
+	date = {2024-10-11},
+	langid = {english},
+	eprinttype = {arxiv},
+	eprint = {2410.08434 [cs]},
+	keywords = {Computer Science - Cryptography and Security, Computer Science - Operating Systems},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\QBXFJQ2X\\Lefeuvre et al. - 2024 - SoK Software Compartmentalization.pdf:application/pdf},
 }
 
-@book{b2,
-  author    = {J. Clerk Maxwell},
-  title     = {A Treatise on Electricity and Magnetism},
-  edition   = {3},
-  volume    = {2},
-  publisher = {Clarendon},
-  address   = {Oxford},
-  year      = {1892},
-  pages     = {68--73}
+@online{noauthor_architecture_nodate,
+	title = {The Architecture of Open Source Applications (Volume 1){LLVM}},
+	url = {https://aosabook.org/en/v1/llvm.html},
+	urldate = {2025-04-12},
+	file = {The Architecture of Open Source Applications (Volume 1)LLVM:C\:\\Users\\Victor\\Zotero\\storage\\MBNN3UJN\\llvm.html:text/html},
 }
 
-@incollection{b3,
-  author    = {I. S. Jacobs and C. P. Bean},
-  title     = {Fine particles, thin films and exchange anisotropy},
-  booktitle = {Magnetism},
-  volume    = {III},
-  editor    = {G. T. Rado and H. Suhl},
-  publisher = {Academic},
-  address   = {New York},
-  year      = {1963},
-  pages     = {271--350}
+@inproceedings{lattner_llvm_2004,
+	location = {San Jose, {CA}, {USA}},
+	title = {{LLVM}: A compilation framework for lifelong program analysis \& transformation},
+	isbn = {978-0-7695-2102-2},
+	url = {http://ieeexplore.ieee.org/document/1281665/},
+	doi = {10.1109/CGO.2004.1281665},
+	shorttitle = {{LLVM}},
+	abstract = {This paper describes {LLVM} (Low Level Virtual Machine), a compiler framework designed to support transparent, lifelong program analysis and transformation for arbitrary programs, by providing high-level information to compiler transformations at compile-time, link-time, run-time, and in idle time between runs. {LLVM} deﬁnes a common, low-level code representation in Static Single Assignment ({SSA}) form, with several novel features: a simple, language-independent type-system that exposes the primitives commonly used to implement high-level language features; an instruction for typed address arithmetic; and a simple mechanism that can be used to implement the exception handling features of high-level languages (and setjmp/longjmp in C) uniformly and eﬃciently. The {LLVM} compiler framework and code representation together provide a combination of key capabilities that are important for practical, lifelong analysis and transformation of programs. To our knowledge, no existing compilation approach provides all these capabilities. We describe the design of the {LLVM} representation and compiler framework, and evaluate the design in three ways: (a) the size and eﬀectiveness of the representation, including the type information it provides; (b) compiler performance for several interprocedural problems; and (c) illustrative examples of the beneﬁts {LLVM} provides for several challenging compiler problems.},
+	eventtitle = {International Symposium on Code Generation and Optimization, 2004. {CGO} 2004.},
+	pages = {75--86},
+	booktitle = {International Symposium on Code Generation and Optimization, 2004. {CGO} 2004.},
+	publisher = {{IEEE}},
+	author = {Lattner, C. and Adve, V.},
+	urldate = {2025-04-12},
+	date = {2004},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\QQU3DTPV\\Lattner and Adve - 2004 - LLVM A compilation framework for lifelong program analysis & transformation.pdf:application/pdf},
 }
 
-@unpublished{b4,
-  author = {K. Elissa},
-  title  = {Title of paper if known},
-  note   = {Unpublished}
+@online{noauthor_httpsllvmorgpubs2004-01-30-cgo-llvmpdf_nodate,
+	title = {https://llvm.org/pubs/2004-01-30-{CGO}-{LLVM}.pdf},
+	url = {https://llvm.org/pubs/2004-01-30-CGO-LLVM.pdf},
+	urldate = {2025-04-12},
+	file = {https\://llvm.org/pubs/2004-01-30-CGO-LLVM.pdf:C\:\\Users\\Victor\\Zotero\\storage\\WKMUMWR2\\2004-01-30-CGO-LLVM.pdf:application/pdf},
 }
 
-@article{b5,
-  author  = {R. Nicole},
-  title   = {Title of paper with only first word capitalized},
-  journal = {J. Name Stand. Abbrev.},
-  note    = {In press}
+@online{noauthor_llvms_nodate,
+	title = {{LLVM}’s Analysis and Transform Passes — {LLVM} 21.0.0git documentation},
+	url = {https://llvm.org/docs/Passes.html#introduction},
+	urldate = {2025-04-14},
+	file = {LLVM’s Analysis and Transform Passes — LLVM 21.0.0git documentation:C\:\\Users\\Victor\\Zotero\\storage\\ZITN6M4S\\Passes.html:text/html},
 }
 
-@article{b6,
-  author  = {Y. Yorozu and M. Hirano and K. Oka and Y. Tagawa},
-  title   = {Electron spectroscopy studies on magneto-optical media and plastic substrate interface},
-  journal = {IEEE Transactions on Magnetics Japan},
-  volume  = {2},
-  pages   = {740--741},
-  year    = {1987},
-  month   = {aug},
-  note    = {Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982}
+@online{noauthor_c_nodate,
+	title = {C++ Attributes - Using the {GNU} Compiler Collection ({GCC})},
+	url = {https://gcc.gnu.org/onlinedocs/gcc-4.7.0/gcc/C_002b_002b-Attributes.html#C_002b_002b-Attributes},
+	urldate = {2025-04-26},
+	file = {C++ Attributes - Using the GNU Compiler Collection (GCC):C\:\\Users\\Victor\\Zotero\\storage\\TZ3T68P9\\C_002b_002b-Attributes.html:text/html},
 }
 
-@book{b7,
-  author    = {M. Young},
-  title     = {The Technical Writer's Handbook},
-  address   = {Mill Valley, CA},
-  publisher = {University Science},
-  year      = {1989}
+@inproceedings{cuoq_detecting_2017,
+	title = {Detecting Strict Aliasing Violations in the Wild},
+	isbn = {978-3-319-52234-0},
+	url = {https://link-springer-com.kuleuven.e-bronnen.be/chapter/10.1007/978-3-319-52234-0_2},
+	doi = {10.1007/978-3-319-52234-0_2},
+	abstract = {Type-based alias analyses allow C compilers to infer that memory locations of distinct types do not alias. Idiomatic reliance on pointers on the one hand, and separate compilation on the other hand, together make it impossible to get this aliasing information any...},
+	eventtitle = {International Conference on Verification, Model Checking, and Abstract Interpretation},
+	pages = {14--33},
+	booktitle = {Verification, Model Checking, and Abstract Interpretation},
+	publisher = {Springer, Cham},
+	author = {Cuoq, Pascal and Runarvot, Loïc and Cherepanov, Alexander},
+	urldate = {2025-05-02},
+	date = {2017},
+	langid = {english},
+	note = {{ISSN}: 1611-3349},
+	file = {Full Text PDF:C\:\\Users\\Victor\\Zotero\\storage\\CWK9CZIB\\Cuoq et al. - 2017 - Detecting Strict Aliasing Violations in the Wild.pdf:application/pdf},
+}
+
+@article{sui_detecting_2014,
+	title = {Detecting Memory Leaks Statically with Full-Sparse Value-Flow Analysis},
+	volume = {40},
+	issn = {1939-3520},
+	url = {https://ieeexplore.ieee.org/document/6720116/},
+	doi = {10.1109/TSE.2014.2302311},
+	abstract = {We introduce a static detector, Saber, for detecting memory leaks in C programs. Leveraging recent advances on sparse pointer analysis, Saber is the first to use a full-sparse value-flow analysis for detecting memory leaks statically. Saber tracks the flow of values from allocation to free sites using a sparse value-flow graph ({SVFG}) that captures def-use chains and value flows via assignments for all memory locations represented by both top-level and address-taken pointers. By exploiting field-, flow- and context-sensitivity during different phases of the analysis, Saber detects memory leaks in a program by solving a graph reachability problem on its {SVFG}. Saber, which is fully implemented in Open64, is effective at detecting 254 leaks in the 15 {SPEC}2000 C programs and seven applications, while keeping the false positive rate at 18.3 percent. Saber compares favorably with several static leak detectors in terms of accuracy (leaks and false alarms reported) and scalability ({LOC} analyzed per second). In particular, compared with Fastcheck (which analyzes allocated objects flowing only into top-level pointers) using the 15 {SPEC}2000 C programs, Saber detects 44.1 percent more leaks at a slightly higher false positive rate but is only a few times slower.},
+	pages = {107--122},
+	number = {2},
+	journaltitle = {{IEEE} Transactions on Software Engineering},
+	author = {Sui, Yulei and Ye, Ding and Xue, Jingling},
+	urldate = {2025-05-02},
+	date = {2014-02},
+	keywords = {Abstracts, Accuracy, Detectors, Memory Leaks, pointer analysis, Resource management, Scalability, Sensitivity, sparse value-flow analysis, Standards, static analysis},
+	file = {Full Text PDF:C\:\\Users\\Victor\\Zotero\\storage\\9D2Z2GBH\\Sui et al. - 2014 - Detecting Memory Leaks Statically with Full-Sparse Value-Flow Analysis.pdf:application/pdf},
+}
+
+@inproceedings{fan_smoke_2019,
+	title = {{SMOKE}: Scalable Path-Sensitive Memory Leak Detection for Millions of Lines of Code},
+	url = {https://ieeexplore.ieee.org/document/8812075/},
+	doi = {10.1109/ICSE.2019.00025},
+	shorttitle = {{SMOKE}},
+	abstract = {Detecting memory leak at industrial scale is still not well addressed, in spite of the tremendous effort from both industry and academia in the past decades. Existing work suffers from an unresolved paradox - a highly precise analysis limits its scalability and an imprecise one seriously hurts its precision or recall. In this work, we present {SMOKE}, a staged approach to resolve this paradox. In the ?rst stage, instead of using a uniform precise analysis for all paths, we use a scalable but imprecise analysis to compute a succinct set of candidate memory leak paths. In the second stage, we leverage a more precise analysis to verify the feasibility of those candidates. The ?rst stage is scalable, due to the design of a new sparse program representation, the use-?ow graph ({UFG}), that models the problem as a polynomial-time state analysis. The second stage analysis is both precise and ef?cient, due to the smaller number of candidates and the design of a dedicated constraint solver. Experimental results show that {SMOKE} can ?nish checking industrial-sized projects, up to 8MLoC, in forty minutes with an average false positive rate of 24.4\%. Besides, {SMOKE} is signi?cantly faster than the state-of-the-art research techniques as well as the industrial tools, with the speedup ranging from 5.2X to 22.8X. In the twenty-nine mature and extensively checked benchmark projects, {SMOKE} has discovered thirty previously unknown memory leaks which were con?rmed by developers, and one even assigned a {CVE} {ID}.},
+	eventtitle = {2019 {IEEE}/{ACM} 41st International Conference on Software Engineering ({ICSE})},
+	pages = {72--82},
+	booktitle = {2019 {IEEE}/{ACM} 41st International Conference on Software Engineering ({ICSE})},
+	author = {Fan, Gang and Wu, Rongxin and Shi, Qingkai and Xiao, Xiao and Zhou, Jinguo and Zhang, Charles},
+	urldate = {2025-05-02},
+	date = {2019-05},
+	note = {{ISSN}: 1558-1225},
+	keywords = {Scalability, Benchmark testing, Complexity theory, Computer bugs, Correlation, Leak detection, memory leak, static bug finding, use-flow graph, value-flow graph, Tools},
+	file = {Full Text PDF:C\:\\Users\\Victor\\Zotero\\storage\\SSEC8XTY\\Fan et al. - 2019 - SMOKE Scalable Path-Sensitive Memory Leak Detection for Millions of Lines of Code.pdf:application/pdf},
+}
+
+@article{cherem_practical_nodate,
+	title = {Practical memory leak detection using guarded value-flow analysis},
+	abstract = {This paper presents a practical inter-procedural analysis algorithm for detecting memory leaks in C programs. Our algorithm tracks the ﬂow of values from allocation points to deallocation points using a sparse representation of the program consisting of a value ﬂow graph that captures def-use relations and value ﬂows via program assignments. Edges in the graph are annotated with guards that describe branch conditions in the program. The memory leak analysis is reduced to a reachability problem over the guarded value ﬂow graph. Our implemented tool has been effective at detecting more than 60 memory leaks in the {SPEC}2000 benchmarks and in two open-source applications, bash and sshd, while keeping the false positive rate below 20\%. The sparse program representation makes the tool efﬁcient in practice, and allows it to report concise error messages.},
+	author = {Cherem, Sigmund and Princehouse, Lonnie and Rugina, Radu},
+	langid = {english},
+	keywords = {Software},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\MCM7MGUE\\Cherem et al. - Practical memory leak detection using guarded value-flow analysis.pdf:application/pdf},
+}
+
+@inproceedings{palit_kaleidoscope_2024,
+	location = {La Jolla {CA} {USA}},
+	title = {Kaleidoscope: Precise Invariant-Guided Pointer Analysis},
+	isbn = {979-8-4007-0386-7},
+	url = {https://dl.acm.org/doi/10.1145/3620666.3651340},
+	doi = {10.1145/3620666.3651340},
+	shorttitle = {Kaleidoscope},
+	abstract = {Pointer analysis techniques are crucial for many software security mitigation approaches. However, these techniques suffer from imprecision; hence, the reported points-to sets are a superset of the actual points-to sets that can possibly form during program execution. To improve the precision of pointer analysis techniques, we propose Kaleidoscope. By using an invariant-guided optimistic ({IGO}) pointer analysis approach, Kaleidoscope makes optimistic assumptions during the pointer analysis that it later validates at runtime. If these optimistic assumptions do not hold true at runtime, Kaleidoscope falls back to an imprecise baseline analysis, thus preserving soundness. We show that Kaleidoscope reduces the average points-to set size by 13.15× across a set of 9 applications over the current state-of-the-art pointer analysis framework. Furthermore, we demonstrate how Kaleidoscope can implement control flow integrity ({CFI}) to increase the security of traditional {CFI} policies.},
+	eventtitle = {{ASPLOS} '24: 29th {ACM} International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 3},
+	pages = {561--576},
+	booktitle = {Proceedings of the 29th {ACM} International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 3},
+	publisher = {{ACM}},
+	author = {Palit, Tapti and Fonseca, Pedro},
+	urldate = {2025-05-06},
+	date = {2024-04-27},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\DR99IHVU\\Palit and Fonseca - 2024 - Kaleidoscope Precise Invariant-Guided Pointer Analysis.pdf:application/pdf},
+}
+
+@article{smaragdakis_defensive_2018,
+	title = {Defensive Points-To Analysis: Effective Soundness via Laziness},
+	volume = {109},
+	rights = {Creative Commons Attribution 3.0 Unported license, info:eu-repo/semantics/{openAccess}},
+	issn = {1868-8969},
+	url = {https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ECOOP.2018.23},
+	doi = {10.4230/LIPICS.ECOOP.2018.23},
+	shorttitle = {Defensive Points-To Analysis},
+	abstract = {We present a defensive may-point-to analysis approach, which oﬀers soundness even in the presence of arbitrary opaque code: all non-empty points-to sets computed are guaranteed to be over-approximations of the sets of values arising at run time. A key design tenet of the analysis is laziness: the analysis computes points-to relationships only for variables or objects that are guaranteed to never escape into opaque code. This means that the analysis misses some valid inferences, yet it also never wastes work to compute sets of values that are not “complete”, i.e., that may be missing elements due to opaque code. Laziness enables great eﬃciency, allowing a highly precise points-to analysis (such as a 5-call-site-sensitive, ﬂow-sensitive analysis).},
+	pages = {23:1--23:28},
+	journaltitle = {{LIPIcs}, Volume 109, {ECOOP} 2018},
+	author = {Smaragdakis, Yannis and Kastrinis, George},
+	editor = {Millstein, Todd},
+	urldate = {2025-05-06},
+	date = {2018},
+	langid = {english},
+	note = {Artwork Size: 28 pages, 1416696 bytes
+{ISBN}: 9783959770798
+Medium: application/pdf
+Publisher: Schloss Dagstuhl – Leibniz-Zentrum für Informatik},
+	keywords = {static analysis, defensive analysis, soundness},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\LMKZ7LNZ\\Smaragdakis and Kastrinis - 2018 - Defensive Points-To Analysis Effective Soundness via Laziness.pdf:application/pdf},
+}
+
+@article{steensgaard_httpswwwcscornelleducoursescs7112005fapaperssteensgaard-popl96pdf_nodate,
+	title = {https://www.cs.cornell.edu/courses/cs711/2005fa/papers/steensgaard-popl96.pdf},
+	url = {https://www.cs.cornell.edu/courses/cs711/2005fa/papers/steensgaard-popl96.pdf},
+	author = {Steensgaard, Bjarne},
+	urldate = {2025-05-06},
+	file = {https\://www.cs.cornell.edu/courses/cs711/2005fa/papers/steensgaard-popl96.pdf:C\:\\Users\\Victor\\Zotero\\storage\\MAQNKK7D\\steensgaard-popl96.pdf:application/pdf},
+}
+
+@article{sui_svf_nodate,
+	title = {{SVF}: Interprocedural Static Value-Flow Analysis in {LLVM}},
+	abstract = {This paper presents {SVF}, a tool that enables scalable and precise interprocedural Static Value-Flow analysis for C programs by leveraging recent advances in sparse analysis. {SVF}, which is fully implemented in {LLVM} (version 3.7.0), allows value-ﬂow construction and pointer analysis to be performed in an iterative manner, thereby providing increasingly improved precision for both. {SVF} accepts points-to information generated by any pointer analysis (e.g., Andersen’s analysis) and constructs an interprocedural memory {SSA} form, in which the def-use chains of both top-level and address-taken variables are captured. Such value-ﬂows can be subsequently exploited to support various forms of program analysis or enable more precise pointer analysis (e.g., ﬂow-sensitive analysis) to be performed sparsely. By dividing a pointer analysis into three loosely coupled components: Graph, Rules and Solver, {SVF} provides an extensible interface for users to write their own solutions easily. Moreover, our memory {SSA} design allows users to make scalability and precision trade-offs by deﬁning their own memory partitioning strategies. We discuss some usage scenarios and our previous experiences in using {SVF} in several client applications.},
+	author = {Sui, Yulei and Xue, Jingling},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\E7U5GTVU\\Sui and Xue - SVF Interprocedural Static Value-Flow Analysis in LLVM.pdf:application/pdf},
+}
+
+@inproceedings{akritidis_preventing_2008,
+	location = {Oakland, {CA}, {USA}},
+	title = {Preventing Memory Error Exploits with {WIT}},
+	isbn = {978-0-7695-3168-7},
+	url = {http://ieeexplore.ieee.org/document/4531158/},
+	doi = {10.1109/SP.2008.30},
+	abstract = {Attacks often exploit memory errors to gain control over the execution of vulnerable programs. These attacks remain a serious problem despite previous research on techniques to prevent them. We present Write Integrity Testing ({WIT}), a new technique that provides practical protection from these attacks. {WIT} uses points-to analysis at compile time to compute the control-ﬂow graph and the set of objects that can be written by each instruction in the program. Then it generates code instrumented to prevent instructions from modifying objects that are not in the set computed by the static analysis, and to ensure that indirect control transfers are allowed by the control-ﬂow graph. To improve coverage where the analysis is not precise enough, {WIT} inserts small guards between the original program objects. We describe an efﬁcient implementation with optimizations to reduce space and time overhead. This implementation can be used in practice because it compiles C and C++ programs without modiﬁcations, it has high coverage with no false positives, and it has low overhead. {WIT}’s average runtime overhead is only 7\% across a set of {CPU} intensive benchmarks and it is negligible when {IO} is the bottleneck.},
+	eventtitle = {2008 {IEEE} Symposium on Security and Privacy (sp 2008)},
+	pages = {263--277},
+	booktitle = {2008 {IEEE} Symposium on Security and Privacy (sp 2008)},
+	publisher = {{IEEE}},
+	author = {Akritidis, Periklis and Cadar, Cristian and Raiciu, Costin and Costa, Manuel and Castro, Miguel},
+	urldate = {2025-05-06},
+	date = {2008-05},
+	langid = {english},
+	note = {{ISSN}: 1081-6011},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\ZWUR293A\\Akritidis et al. - 2008 - Preventing Memory Error Exploits with WIT.pdf:application/pdf},
+}
+
+@article{castro_securing_nodate,
+	title = {Securing software by enforcing data-ﬂow integrity},
+	abstract = {Software attacks often subvert the intended data-ﬂow in a vulnerable program. For example, attackers exploit buffer overﬂows and format string vulnerabilities to write data to unintended locations. We present a simple technique that prevents these attacks by enforcing data-ﬂow integrity. It computes a data-ﬂow graph using static analysis, and it instruments the program to ensure that the ﬂow of data at runtime is allowed by the data-ﬂow graph. We describe an efﬁcient implementation of data-ﬂow integrity enforcement that uses static analysis to reduce instrumentation overhead. This implementation can be used in practice to detect a broad class of attacks and errors because it can be applied automatically to C and C++ programs without modiﬁcations, it does not have false positives, and it has low overhead.},
+	author = {Castro, Miguel and Harris, Tim},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\ZK6LKBIL\\Castro and Harris - Securing software by enforcing data-ﬂow integrity.pdf:application/pdf},
+}
+
+@online{noauthor_httpsdl-acm-orgkuleuvene-bronnenbedoipdf10114512734421250789_nodate,
+	title = {https://dl-acm-org.kuleuven.e-bronnen.be/doi/pdf/10.1145/1273442.1250789},
+	url = {https://dl-acm-org.kuleuven.e-bronnen.be/doi/pdf/10.1145/1273442.1250789},
+	urldate = {2025-05-06},
+	file = {https\://dl-acm-org.kuleuven.e-bronnen.be/doi/pdf/10.1145/1273442.1250789:C\:\\Users\\Victor\\Zotero\\storage\\8M7MVD4V\\1273442.pdf:application/pdf},
+}
+
+@article{smaragdakis_pointer_2015,
+	title = {Pointer Analysis},
+	volume = {4},
+	issn = {2325-1107},
+	url = {https://zenodo.org/records/18142/files/points-to-tutorial15.pdf},
+	doi = {10.1561/2500000014},
+	abstract = {Pointer analysis is a fundamental static program analysis with a rich literature and wide applications. The goal of pointer analysis is to compute an approximation of the set of program objects that a pointer variable or expression can refer to. This monograph introduces and surveys the most common modern approaches to pointer analysis, with an emphasis on distilling the essence of common analysis algorithms. With an eye towards ease of exposition and concreteness, the presentation aspires to be rather more tutorial and hands-on than other surveys of the pointer analysis area. To this end, the focus is on a declarative presentation of a common core of pointer analyses: algorithms are modeled as configurable, yet easy-to-follow, logical specifications. The specifications serve as a starting point for a broader discussion of the literature, as independent threads spun from the declarative model.},
+	pages = {1--69},
+	number = {1},
+	journaltitle = {Foundations and trends in programming languages},
+	author = {Smaragdakis, Yannis and Balatsouras, George},
+	urldate = {2025-05-06},
+	date = {2015},
+	note = {Edition: 1
+{ISBN}: 9781680830200
+Place: Boston - Delft
+Publisher: now},
+	keywords = {Abstract data types (Computer science), Computer science, Programming languages (Electronic computers), Technology},
+	file = {Submitted Version:C\:\\Users\\Victor\\Zotero\\storage\\TP3E82CF\\Smaragdakis and Balatsouras - 2015 - Pointer Analysis.pdf:application/pdf},
+}
+
+@article{hind_interprocedural_1999,
+	title = {Interprocedural pointer alias analysis},
+	volume = {21},
+	issn = {0164-0925, 1558-4593},
+	url = {https://dl.acm.org/doi/10.1145/325478.325519},
+	doi = {10.1145/325478.325519},
+	abstract = {We present practical approximation methods for computing and representing interprocedural aliases for a program written in a language that includes pointers, reference parameters, and recursion. We present the following contributions: (1) a framework for interprocedural pointer alias analysis that handles function pointers by constructing the program call graph while alias analysis is being performed; (2) a
+              flow-sensitive
+              interprocedural pointer alias analysis algorithm; (3) a
+              flow-insensitive
+              interprocedural pointer alias analysis algorithm; (4) a
+              flow-insensitive
+              interprocedural pointer alias analysis algorithm that incorporates
+              kill
+              information to improve precision; (5) empirical measurements of the efficiency and  precision of the three interprocedural alias analysis algorithms.},
+	pages = {848--894},
+	number = {4},
+	journaltitle = {{ACM} Trans. Program. Lang. Syst.},
+	author = {Hind, Michael and Burke, Michael and Carini, Paul and Choi, Jong-Deok},
+	urldate = {2025-05-06},
+	date = {1999-07},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\YZHPYFJ4\\Hind et al. - 1999 - Interprocedural pointer alias analysis.pdf:application/pdf},
+}
+
+@inproceedings{kasten_integrating_2024,
+	location = {Padua Italy},
+	title = {Integrating Static Analyses for High-Precision Control-Flow Integrity},
+	isbn = {979-8-4007-0959-3},
+	url = {https://dl.acm.org/doi/10.1145/3678890.3678920},
+	doi = {10.1145/3678890.3678920},
+	abstract = {Memory corruptions are still one of the most prevalent and severe security vulnerabilities in today’s programs. For this reason, several techniques for mitigating software vulnerabilities exist and are used in production systems. An important mitigation involves the prevention of invalid control flow transfers. Attackers often corrupt function pointers to subvert a forward-edge in a program’s call graph. Forward-edges can be protected using Control-Flow Integrity ({CFI}), for which practical implementations already exist. However, current {CFI} implementations are often imprecise, allowing more control flow transfers than necessary. This often leaves sufficient leeway for an attacker to successfully exploit a program. This paper presents High-Precision {CFI} ({HPCFI}), a concept and implementation for precise forward-edge {CFI} protection of indirect calls in C and C++ programs using a combination of type analysis and static data-flow analysis for determining valid forward-edges. {HPCFI} is implemented as {LLVM} compiler passes that perform a precise type analysis and utilize the Static Value-Flow ({SVF}) framework to conduct a static data-flow analysis. The combination of type analysis and static data-flow analysis offers higher precision than conventional heuristic-based approaches. Our evaluation, using all compatible benchmarks from {SPEC} {CPU} 2017, demonstrates that {HPCFI} can be effectively applied to large projects with an average performance overhead of only 1.3\%, while improving the precision of established {CFI} mechanisms, such as Clang {CFI}, by up to 99\% and 40\% on average.},
+	eventtitle = {{RAID} '24: The 27th International Symposium on Research in Attacks, Intrusions and Defenses},
+	pages = {419--434},
+	booktitle = {The 27th International Symposium on Research in Attacks, Intrusions and Defenses},
+	publisher = {{ACM}},
+	author = {Kasten, Florian and Zieris, Philipp and Horsch, Julian},
+	urldate = {2025-05-06},
+	date = {2024-09-30},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\S357AM6H\\Kasten et al. - 2024 - Integrating Static Analyses for High-Precision Control-Flow Integrity.pdf:application/pdf},
+}
+
+@article{cai_unleashing_nodate,
+	title = {Unleashing the Power of Type-Based Call Graph Construction by Using Regional Pointer Information},
+	abstract = {When dealing with millions of lines of C code, we still cannot have the cake and eat it: type analysis for call graph construction is scalable yet highly imprecise. We address this precision issue through a practical observation: many function pointers are simple; they are not referenced by other pointers, nor do they derive their values by dereferencing other pointers. As a result, simple function pointers can be resolved with precise and affordable pointer aliasing information. In this work, we advocate {KELP} with two concerted stages. First, instead of directly using type analysis, {KELP} performs regional pointer analysis along def-use chains to early and precisely resolve the indirect calls through simple function pointers. Second, {KELP} then leverages type analysis to handle the remaining indirect calls. The ﬁrst stage is efﬁcient as {KELP} selectively reasons about simple function pointers, thereby avoiding prohibitive performance penalties. The second stage is precise as the candidate address-taken functions for checking type compatibility are largely reduced thanks to the ﬁrst stage. Our experiments on twenty large-scale and popular software programs show that, on average, {KELP} can reduce spurious callees by 54.2\% with only a negligible additional time cost of 8.5\% (equivalent to 6.3 seconds) compared to the previous approach. More excitingly, when evaluating the call graphs through the lens of three various downstream clients (i.e., thread-sharing analysis, value-ﬂow bug detection, and directed grey-box fuzzing), {KELP} can signiﬁcantly enhance their effectiveness for better vulnerability understanding, hunting, and reproduction.},
+	author = {Cai, Yuandao and Jin, Yibo and Zhang, Charles},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\Q6R9VMSN\\Cai et al. - Unleashing the Power of Type-Based Call Graph Construction by Using Regional Pointer Information.pdf:application/pdf},
+}
+
+@inproceedings{lu_practical_2023,
+	title = {Practical Program Modularization with Type-Based Dependence Analysis},
+	url = {https://ieeexplore.ieee.org/document/10179412/},
+	doi = {10.1109/SP46215.2023.10179412},
+	abstract = {Today's software programs are bloating and have become extremely complex. As there is typically no internal isolation among modules in a program, a vulnerability can be exploited to corrupt the memory and take control of the whole program. Program modularization is thus a promising security mechanism that splits a complex program into smaller modules, so that memory-access instructions can be constrained from corrupting irrelevant modules. A general approach to realizing program modularization is dependence analysis which determines if an instruction is independent of specific code or data; and if so, it can be modularized. Unfortunately, dependence analysis in complex programs is generally considered infeasible, due to problems in data-flow analysis, such as unknown indirect-call targets, pointer aliasing, and path explosion. As a result, we have not seen practical automated program modularization built on dependence analysis.This paper presents a breakthrough—Type-based dependence analysis for Program Modularization ({TyPM}). Its goal is to determine which modules in a program can never pass a type of object (including references) to a memory-access instruction; therefore, objects of this type that are created by these modules can never be valid targets of the instruction. The idea is to employ a type-based analysis to first determine which types of data flows can take place between two modules, and then transitively resolve all dependent modules of a memory-access instruction, with respect to the specific type. Such an approach avoids the data-flow analysis and can be practical. We develop two important security applications based on {TyPM}: refining indirect-call targets and protecting critical data structures. We extensively evaluate {TyPM} with various system software, including an {OS} kernel, a hypervisor, {UEFI} firmware, and a browser. Results show that on average {TyPM} additionally refines indirect-call targets produced by the state of the art by 31\%-91\%. {TyPM} can also remove 99.9\% of modules for memory-write instructions to prevent them from corrupting critical data structures in the Linux kernel.},
+	eventtitle = {2023 {IEEE} Symposium on Security and Privacy ({SP})},
+	pages = {1256--1270},
+	booktitle = {2023 {IEEE} Symposium on Security and Privacy ({SP})},
+	author = {Lu, Kangjie},
+	urldate = {2025-05-06},
+	date = {2023-05},
+	note = {{ISSN}: 2375-1207},
+	keywords = {Browsers, {CFI}, Data structures, dependence-analysis, indirect-call, isolation, Linux, Modularization, Privacy, Refining, System software, type-analysis, Virtual machine monitors},
+	file = {Full Text PDF:C\:\\Users\\Victor\\Zotero\\storage\\V6CHWBQM\\Lu - 2023 - Practical Program Modularization with Type-Based Dependence Analysis.pdf:application/pdf;PDF:C\:\\Users\\Victor\\Zotero\\storage\\4FIELZ3U\\Lu - 2023 - Practical Program Modularization with Type-Based Dependence Analysis.pdf:application/pdf},
+}
+
+@article{livshits_defense_2015,
+	title = {In defense of soundiness: a manifesto},
+	volume = {58},
+	issn = {0001-0782, 1557-7317},
+	url = {https://dl.acm.org/doi/10.1145/2644805},
+	doi = {10.1145/2644805},
+	shorttitle = {In defense of soundiness},
+	abstract = {Soundy is the new sound.},
+	pages = {44--46},
+	number = {2},
+	journaltitle = {Commun. {ACM}},
+	author = {Livshits, Benjamin and Sridharan, Manu and Smaragdakis, Yannis and Lhoták, Ondřej and Amaral, J. Nelson and Chang, Bor-Yuh Evan and Guyer, Samuel Z. and Khedker, Uday P. and Møller, Anders and Vardoulakis, Dimitrios},
+	urldate = {2025-05-06},
+	date = {2015-01-28},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\GTXV9QUT\\Livshits et al. - 2015 - In defense of soundiness a manifesto.pdf:application/pdf},
+}
+
+@online{noauthor_soundiness_nodate,
+	title = {Soundiness Home Page},
+	url = {http://soundiness.org},
+	urldate = {2025-05-06},
+	file = {Soundiness Home Page:C\:\\Users\\Victor\\Zotero\\storage\\ECT2K9NP\\soundiness.org.html:text/html},
+}
+
+@article{ye_accelerating_nodate,
+	title = {Accelerating Dynamic Detection of Uses of Undefined Values with Static Value-Flow Analysis},
+	abstract = {Uninitialized variables can cause system crashes when used and security vulnerabilities when exploited. With source rather than binary instrumentation, dynamic analysis tools such as {MSan} can detect uninitialized memory uses at signiﬁcantly reduced overhead but are still costly.},
+	author = {Ye, Ding and Sui, Yulei and Xue, Jingling},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\YXII95PX\\Ye et al. - Accelerating Dynamic Detection of Uses of Undefined Values with Static Value-Flow Analysis.pdf:application/pdf},
+}
+
+@inproceedings{li_finding_2020,
+	location = {Virtual Event {USA}},
+	title = {Finding Cracks in Shields: On the Security of Control Flow Integrity Mechanisms},
+	isbn = {978-1-4503-7089-9},
+	url = {https://dl.acm.org/doi/10.1145/3372297.3417867},
+	doi = {10.1145/3372297.3417867},
+	shorttitle = {Finding Cracks in Shields},
+	abstract = {Control-flow integrity ({CFI}) is a promising technique to mitigate control-flow hijacking attacks. In the past decade, dozens of {CFI} mechanisms have been proposed by researchers. Despite the claims made by themselves, the security promises of these mechanisms have not been carefully evaluated, and thus are questionable.},
+	eventtitle = {{CCS} '20: 2020 {ACM} {SIGSAC} Conference on Computer and Communications Security},
+	pages = {1821--1835},
+	booktitle = {Proceedings of the 2020 {ACM} {SIGSAC} Conference on Computer and Communications Security},
+	publisher = {{ACM}},
+	author = {Li, Yuan and Wang, Mingzhe and Zhang, Chao and Chen, Xingman and Yang, Songtao and Liu, Ying},
+	urldate = {2025-05-07},
+	date = {2020-10-30},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\LHZCV48V\\Li et al. - 2020 - Finding Cracks in Shields On the Security of Control Flow Integrity Mechanisms.pdf:application/pdf},
+}
+
+@article{diez-franco_optimized_2024,
+	title = {Optimized Data-Flow Integrity for Modern Compilers},
+	volume = {12},
+	issn = {2169-3536},
+	url = {https://ieeexplore.ieee.org/document/10664032/},
+	doi = {10.1109/ACCESS.2024.3454551},
+	abstract = {Non-control-data attacks are those attacks that purely target and modify the non-control data of a program, such as boolean values, user input or configuration parameters, and leave the control flow of a program untouched. These attacks were considered a niche due to the high difficulty in crafting attacks that do not modify the control flow. However, in recent years researchers have already demonstrated that non-control-data attacks can be automatically constructed and that they pose a significant threat because they can compromise critical and widely used software, such as web browsers and the Linux kernel. Moreover, they can also be used to disable or bypass state-of-the-art software security techniques, such as control-flow integrity. The most promising technique to protect against non-control-data attacks is data-flow integrity, however, modern compilers do not implement this protection yet. In this work we present an optimized data-flow integrity implementation for modern compilers that reduces the amount of basic blocks that need to be protected in an average of 45.8\%, it also has broader security guarantees due to its more precise static analysis. Finally, we evaluate the completeness of our optimized data-flow integrity implementation.},
+	pages = {124171--124182},
+	journaltitle = {{IEEE} Access},
+	author = {Díez-Franco, Irene and Ugarte-Pedrero, Xabier and García-Bringas, Pablo},
+	urldate = {2025-05-07},
+	date = {2024},
+	keywords = {Data structures, Linux, Compilers, Data processing, data-flow integrity, Instruments, non-control-data attacks, program analysis, Program processors, Runtime, Security, security vulnerabilities, Static analysis, systems security},
+	file = {Full Text PDF:C\:\\Users\\Victor\\Zotero\\storage\\LNAPIXBB\\Díez-Franco et al. - 2024 - Optimized Data-Flow Integrity for Modern Compilers.pdf:application/pdf},
+}
+
+@article{bang_trust_nodate,
+	title = {{TRUST}: A Compilation Framework for In-process Isolation to Protect Safe Rust against Untrusted Code},
+	abstract = {Rust was invented to help developers build highly safe systems. It comes with a variety of programming constructs that put emphasis on safety and control of memory layout. Rust enforces strict discipline about a type system and ownership model to enable compile-time checks of all spatial and temporal safety errors. Despite this advantage in security, the restrictions imposed by Rust’s type system make it difﬁcult or inefﬁcient to express certain designs or computations. To ease or simplify their programming, developers thus often include untrusted code from unsafe Rust or external libraries written in other languages. Sadly, the programming practices embracing such untrusted code for ﬂexibility or efﬁciency subvert the strong safety guarantees by safe Rust. This paper presents {TRUST}, a compilation framework which against untrusted code present in the program, provides trustworthy protection of safe Rust via in-process isolation. Its main strategy is allocating objects in an isolated memory region that is accessible to safe Rust but restricted from being written by the untrusted. To enforce this, {TRUST} employs software fault isolation and x86 protection keys. It can be applied directly to any Rust code without requiring manual changes. Our experiments reveal that {TRUST} is effective and efﬁcient, incurring runtime overhead of only 7.55\% and memory overhead of 13.30\% on average when running 11 widely used crates in Rust.},
+	author = {Bang, Inyoung and Kayondo, Martin and Moon, Hyungon and Paek, Yunheung},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\A2DBMHW8\\Bang et al. - TRUST A Compilation Framework for In-process Isolation to Protect Safe Rust against Untrusted Code.pdf:application/pdf},
+}
+
+@incollection{vojnar_phasar_2019,
+	location = {Switzerland},
+	title = {{PhASAR}: An Inter-procedural Static Analysis Framework for C/C++},
+	volume = {11428},
+	isbn = {978-3-030-17464-4},
+	booktitle = {Tools and Algorithms for the Construction and Analysis of Systems},
+	publisher = {Springer International Publishing {AG}},
+	author = {Vojnar, Tomás and Zhang, Lijun},
+	date = {2019},
+}
+
+@article{mathiasen_fine-grained_2021,
+	title = {The fine-grained and parallel complexity of andersen’s pointer analysis},
+	volume = {5},
+	issn = {2475-1421},
+	url = {https://dl.acm.org/doi/10.1145/3434315},
+	doi = {10.1145/3434315},
+	abstract = {Pointer analysis is one of the fundamental problems in static program analysis. Given a set of pointers, the task is to produce a useful over-approximation of the memory locations that each pointer may point-to at runtime. The most common formulation is Andersen’s Pointer Analysis ({APA}), defined as an inclusion-based set of
+              m
+              pointer constraints over a set of
+              n
+              pointers. Scalability is extremely important, as points-to information is a prerequisite to many other components in the static-analysis pipeline. Existing algorithms solve {APA} in
+              O
+              (
+              n
+              2
+              ·
+              m
+              ) time, while it has been conjectured that the problem has no truly sub-cubic algorithm, with a proof so far having remained elusive. It is also well-known that {APA} can be solved in
+              O
+              (
+              n
+              2
+              ) time under certain sparsity conditions that hold naturally in some settings. Besides these simple bounds, the complexity of the problem has remained poorly understood.
+            
+            
+              In this work we draw a rich fine-grained and parallel complexity landscape of {APA}, and present upper and lower bounds. First, we establish an
+              O
+              (
+              n
+              3
+              ) upper-bound for general {APA}, improving over
+              O
+              (
+              n
+              2
+              ·
+              m
+              ) as
+              n
+              =
+              O
+              (
+              m
+              ). Second, we show that even on-demand {APA} (“may a specific pointer
+              a
+              point to a specific location
+              b
+              ?”) has an Ω(
+              n
+              3
+              ) (combinatorial) lower bound under standard complexity-theoretic hypotheses. This formally establishes the long-conjectured “cubic bottleneck” of {APA}, and shows that our
+              O
+              (
+              n
+              3
+              )-time algorithm is optimal. Third, we show that under mild restrictions, {APA} is solvable in Õ(
+              n
+              ω
+              ) time, where ω{\textless}2.373 is the matrix-multiplication exponent. It is believed that ω=2+
+              o
+              (1), in which case this bound becomes quadratic. Fourth, we show that even under such restrictions, even the on-demand problem has an Ω(
+              n
+              2
+              ) lower bound under standard complexity-theoretic hypotheses, and hence our algorithm is optimal when ω=2+
+              o
+              (1). Fifth, we study the parallelizability of {APA} and establish lower and upper bounds: (i) in general, the problem is P-complete and hence unlikely parallelizable, whereas (ii) under mild restrictions, the problem is parallelizable. Our theoretical treatment formalizes several insights that can lead to practical improvements in the future.},
+	pages = {1--29},
+	issue = {{POPL}},
+	journaltitle = {Proc. {ACM} Program. Lang.},
+	author = {Mathiasen, Anders Alnor and Pavlogiannis, Andreas},
+	urldate = {2025-05-07},
+	date = {2021-01-04},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\RISSY7J3\\Mathiasen and Pavlogiannis - 2021 - The fine-grained and parallel complexity of andersen’s pointer analysis.pdf:application/pdf},
+}
+
+@article{bellec_rt-dfi_2022,
+	title = {{RT}-{DFI}: Optimizing Data-Flow Integrity for Real-Time Systems},
+	volume = {231},
+	rights = {Creative Commons Attribution 4.0 International license, info:eu-repo/semantics/{openAccess}},
+	issn = {1868-8969},
+	url = {https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ECRTS.2022.18},
+	doi = {10.4230/LIPICS.ECRTS.2022.18},
+	shorttitle = {{RT}-{DFI}},
+	abstract = {The emergence of Real-Time Systems with increased connections to their environment has led to a greater demand in security for these systems. Memory corruption attacks, which modify the memory to trigger unexpected executions, are a significant threat against applications written in low-level languages. Data-Flow Integrity ({DFI}) is a protection that verifies that only a trusted source has written any loaded data. The overhead of such a security mechanism remains a major issue that limits its adoption. This article presents {RT}-{DFI}, a new approach that optimizes Data-Flow Integrity to reduce its overhead on the Worst-Case Execution Time. We model the number and order of the checks and use an Integer Linear Programming solver to optimize the protection on the Worst-Case Execution Path. Our approach protects the program against many memory-corruption attacks, including Return-Oriented Programming and Data-Only attacks. Moreover, our experimental results show that our optimization reduces the overhead by 7\% on average compared to a state-of-the-art implementation.},
+	pages = {18:1--18:24},
+	journaltitle = {{LIPIcs}, Volume 231, {ECRTS} 2022},
+	author = {Bellec, Nicolas and Hiet, Guillaume and Rokicki, Simon and Tronel, Frederic and Puaut, Isabelle},
+	editor = {Maggio, Martina},
+	urldate = {2025-05-07},
+	date = {2022},
+	langid = {english},
+	note = {Artwork Size: 24 pages, 982289 bytes
+{ISBN}: 9783959772396
+Medium: application/pdf
+Publisher: Schloss Dagstuhl – Leibniz-Zentrum für Informatik},
+	keywords = {Data-flow integrity, Real-time system, Security and privacy → Software and application security, Software and its engineering → Real-time systems software, Software security, Worst-case execution time},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\RCY4EAQD\\Bellec et al. - 2022 - RT-DFI Optimizing Data-Flow Integrity for Real-Time Systems.pdf:application/pdf},
+}
+
+@article{feng_toward_2022,
+	title = {Toward Taming the Overhead Monster for Data-flow Integrity},
+	volume = {27},
+	issn = {1084-4309, 1557-7309},
+	url = {https://dl.acm.org/doi/10.1145/3490176},
+	doi = {10.1145/3490176},
+	abstract = {Data-Flow Integrity ({DFI}) is a well-known approach to effectively detecting a wide range of software attacks. However, its real-world application has been quite limited so far because of the prohibitive performance overhead it incurs. Moreover, the overhead is enormously difficult to overcome without substantially lowering the {DFI} criterion. In this work, an analysis is performed to understand the main factors contributing to the overhead. Accordingly, a hardware-assisted parallel approach is proposed to tackle the overhead challenge. Simulations on {SPEC} {CPU} 2006 benchmark show that the proposed approach can completely enforce the {DFI} defined in the original seminal work while reducing performance overhead by 4×, on average.},
+	pages = {1--24},
+	number = {3},
+	journaltitle = {{ACM} Trans. Des. Autom. Electron. Syst.},
+	author = {Feng, Lang and Huang, Jiayi and Huang, Jeff and Hu, Jiang},
+	urldate = {2025-05-07},
+	date = {2022-05-31},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\6GIP6FFW\\Feng et al. - 2022 - Toward Taming the Overhead Monster for Data-flow Integrity.pdf:application/pdf},
+}
+
+@inproceedings{jin_annotating_2022,
+	location = {San Francisco, {CA}, {USA}},
+	title = {Annotating, Tracking, and Protecting Cryptographic Secrets with {CryptoMPK}},
+	rights = {https://doi.org/10.15223/policy-009},
+	isbn = {978-1-6654-1316-9},
+	url = {https://ieeexplore.ieee.org/document/9833650/},
+	doi = {10.1109/SP46214.2022.9833650},
+	abstract = {Protecting conﬁdential data against memory disclosure attacks is crucial to many critical applications, especially those involve cryptographic operations. However, it is neither easy to identify involved cryptographic conﬁdential data in a program nor to implement a ﬁne-grained and yet efﬁcient protection. Existing defensive techniques face many shortcomings such as coarse-grained protection or exorbitant overhead. As a result, real world crypto applications seldom applied this kind of protection in practice.},
+	eventtitle = {2022 {IEEE} Symposium on Security and Privacy ({SP})},
+	pages = {650--665},
+	booktitle = {2022 {IEEE} Symposium on Security and Privacy ({SP})},
+	publisher = {{IEEE}},
+	author = {Jin, Xuancheng and Xiao, Xuangan and Jia, Songlin and Gao, Wang and Gu, Dawu and Zhang, Hang and Ma, Siqi and Qian, Zhiyun and Li, Juanru},
+	urldate = {2025-05-07},
+	date = {2022-05},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\WGCL6TUU\\Jin et al. - 2022 - Annotating, Tracking, and Protecting Cryptographic Secrets with CryptoMPK.pdf:application/pdf},
+}
+
+@inproceedings{bairagi_precise_1997,
+	title = {Precise call graph construction for {OO} programs in the presence of virtual functions},
+	url = {https://ieeexplore.ieee.org/document/622674},
+	doi = {10.1109/ICPP.1997.622674},
+	abstract = {Several intra- and inter-procedural program analysis techniques form the backbone of an optimizing and parallelizing compiler. The efficacy of these analyses depends upon how precise the call graph is. However, due to lack of exact type information for objects in an object-oriented ({OO}) program the existing call graph construction algorithms are rendered imprecise. In this paper, we present an algorithm for constructing a more precise call graph by exploiting the static class hierarchy of an {OO} program. The information collected during the class hierarchy analysis helps in avoiding unnecessary addition of many spurious call graph edges for virtual-function calls. We have implemented our algorithm for handling C++ programs within a restructuring tool, Sage++. With our precise algorithm for call graph construction, the percentage reduction in the number of nodes and edges in the call graphs for the benchmark programs we had selected ranged between 4\% to 56\% and between 22\% to 58\%, respectively.},
+	eventtitle = {the 1997 International Conference on Parallel Processing (Cat. No.97TB100162)},
+	pages = {412--416},
+	booktitle = {Proceedings of the 1997 International Conference on Parallel Processing (Cat. No.97TB100162)},
+	author = {Bairagi, D. and Kumar, S. and Agrawal, D.P.},
+	urldate = {2025-05-14},
+	date = {1997-08},
+	note = {{ISSN}: 0190-3918},
+	keywords = {Program processors, Algorithm design and analysis, Data analysis, Dynamic programming, Functional programming, Information analysis, Optimizing compilers, Parallel processing, Parallel programming, Spine},
+	file = {Full Text PDF:C\:\\Users\\Victor\\Zotero\\storage\\J49X387F\\Bairagi et al. - 1997 - Precise call graph construction for OO programs in the presence of virtual functions.pdf:application/pdf},
+}
+
+@inproceedings{sui_svf_2016,
+	location = {New York, {NY}, {USA}},
+	title = {{SVF}: interprocedural static value-flow analysis in {LLVM}},
+	isbn = {978-1-4503-4241-4},
+	url = {https://dl.acm.org/doi/10.1145/2892208.2892235},
+	doi = {10.1145/2892208.2892235},
+	series = {{CC} '16},
+	shorttitle = {{SVF}},
+	abstract = {This paper presents {SVF}, a tool that enables scalable and precise interprocedural Static Value-Flow analysis for C programs by leveraging recent advances in sparse analysis. {SVF}, which is fully implemented in {LLVM}, allows value-flow construction and pointer analysis to be performed in an iterative manner, thereby providing increasingly improved precision for both. {SVF} accepts points- to information generated by any pointer analysis (e.g., Andersen’s analysis) and constructs an interprocedural memory {SSA} form, in which the def-use chains of both top-level and address-taken variables are captured. Such value-flows can be subsequently exploited to support various forms of program analysis or enable more precise pointer analysis (e.g., flow-sensitive analysis) to be performed sparsely. By dividing a pointer analysis into three loosely coupled components: Graph, Rules and Solver, {SVF} provides an extensible interface for users to write their own solutions easily. {SVF} is publicly available at http://unsw-corg.github.io/{SVF}.},
+	pages = {265--266},
+	booktitle = {Proceedings of the 25th International Conference on Compiler Construction},
+	publisher = {Association for Computing Machinery},
+	author = {Sui, Yulei and Xue, Jingling},
+	urldate = {2025-05-14},
+	date = {2016},
+	file = {Full Text PDF:C\:\\Users\\Victor\\Zotero\\storage\\YE6J8FB7\\Sui and Xue - 2016 - SVF interprocedural static value-flow analysis in LLVM.pdf:application/pdf},
+}
+
+@inproceedings{steensgaard_points-analysis_1996,
+	location = {St. Petersburg Beach, Florida, United States},
+	title = {Points-to analysis in almost linear time},
+	isbn = {978-0-89791-769-8},
+	url = {http://portal.acm.org/citation.cfm?doid=237721.237727},
+	doi = {10.1145/237721.237727},
+	eventtitle = {the 23rd {ACM} {SIGPLAN}-{SIGACT} symposium},
+	pages = {32--41},
+	booktitle = {Proceedings of the 23rd {ACM} {SIGPLAN}-{SIGACT} symposium on Principles of programming languages  - {POPL} '96},
+	publisher = {{ACM} Press},
+	author = {Steensgaard, Bjarne},
+	urldate = {2025-05-15},
+	date = {1996},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\RVT9SQW6\\Steensgaard - 1996 - Points-to analysis in almost linear time.pdf:application/pdf},
+}
+
+@inproceedings{noauthor_2015_2015,
+	title = {2015 {IEEE} 6th International Workshop on Program Comprehension through Dynamic Analysis ({PCODA} 2015): Montréal, Québec, Canada, 2 March 2015.},
+	isbn = {978-1-4673-6917-6},
+	shorttitle = {2015 {IEEE} 6th International Workshop on Program Comprehension through Dynamic Analysis ({PCODA} 2015)},
+	publisher = {{IEEE}},
+	date = {2015},
+	keywords = {Computer programs, Software maintenance},
+}
+
+@article{li_hybrid_nodate,
+	title = {A Hybrid Alias Analysis and Its Application to Global Variable Protection in the Linux Kernel},
+	abstract = {Global variables in the Linux kernel have been a common target of memory corruption attacks to achieve privilege escalation. Several potential defense mechanisms can be employed to safeguard global variables. One approach involves placing global variables in read-only pages after kernel initialization (ro\_after\_init), while another involves employing software fault isolation ({SFI}) to dynamically block unintended writes to these variables. To deploy such solutions in practice, a key building block is a sound, precise, and scalable alias analysis that is capable of identifying all the pointer aliases of global variables, as any pointer alias may be used for intended writes to a global variable. Unfortunately, the two existing styles of data-flow-based (e.g., Andersen-style) alias analysis and typebased alias analysis have serious limitations in scalability and precision when applied to the Linux kernel. This paper proposes a novel and general hybrid alias analysis that unifies the two complementary approaches in a graph reachability framework using context-free-language, also known as {CFL}-reachability. We show our hybrid alias analysis is extremely effective, significantly and simultaneously outperforming the data-flow-based alias analysis in scalability and the type-based alias analysis in precision. Under the same time budget, our hybrid analysis finds 42\% of the Linux kernel global variables protectable as ro\_after\_init, whereas the two separate analyses find a combined 16\% only.},
+	author = {Li, Guoren},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\YS4YLYG4\\Li - A Hybrid Alias Analysis and Its Application to Global Variable Protection in the Linux Kernel.pdf:application/pdf},
+}
+
+@inproceedings{bhatkar_data_2008,
+	title = {Data Space Randomization},
+	isbn = {978-3-540-70542-0},
+	url = {https://link.springer.com/chapter/10.1007/978-3-540-70542-0_1},
+	doi = {10.1007/978-3-540-70542-0_1},
+	abstract = {Over the past several years, {US}-{CERT} advisories, as well as most critical updates from software vendors, have been due to memory corruption vulnerabilities such as buffer overflows, heap overflows, etc. Several techniques have been developed to defend against the...},
+	eventtitle = {International Conference on Detection of Intrusions and Malware, and Vulnerability Assessment},
+	pages = {1--22},
+	booktitle = {Detection of Intrusions and Malware, and Vulnerability Assessment},
+	publisher = {Springer, Berlin, Heidelberg},
+	author = {Bhatkar, Sandeep and Sekar, R.},
+	urldate = {2025-05-17},
+	date = {2008},
+	langid = {english},
+	note = {{ISSN}: 1611-3349},
+	file = {Full Text PDF:C\:\\Users\\Victor\\Zotero\\storage\\SIQQSF5A\\Bhatkar and Sekar - 2008 - Data Space Randomization.pdf:application/pdf},
+}
+
+@inproceedings{chisnall_beyond_2015,
+	location = {Istanbul Turkey},
+	title = {Beyond the {PDP}-11: Architectural Support for a Memory-Safe C Abstract Machine},
+	isbn = {978-1-4503-2835-7},
+	url = {https://dl.acm.org/doi/10.1145/2694344.2694367},
+	doi = {10.1145/2694344.2694367},
+	shorttitle = {Beyond the {PDP}-11},
+	abstract = {We propose a new memory-safe interpretation of the C abstract machine that provides stronger protection to beneﬁt security and debugging. Despite ambiguities in the speciﬁcation intended to provide implementation ﬂexibility, contemporary implementations of C have converged on a memory model similar to the {PDP}-11, the original target for C. This model lacks support for memory safety despite welldocumented impacts on security and reliability.},
+	eventtitle = {{ASPLOS} '15: Architectural Support for Programming Languages and Operating Systems},
+	pages = {117--130},
+	booktitle = {Proceedings of the Twentieth International Conference on Architectural Support for Programming Languages and Operating Systems},
+	publisher = {{ACM}},
+	author = {Chisnall, David and Rothwell, Colin and Watson, Robert N.M. and Woodruff, Jonathan and Vadera, Munraj and Moore, Simon W. and Roe, Michael and Davis, Brooks and Neumann, Peter G.},
+	urldate = {2025-05-19},
+	date = {2015-03-14},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\292DS34S\\Chisnall et al. - 2015 - Beyond the PDP-11 Architectural Support for a Memory-Safe C Abstract Machine.pdf:application/pdf},
+}
+
+@thesis{andersen_program_1994,
+	title = {Program Analysis and Specializationforthe C Programming Language},
+	url = {https://www.cs.cornell.edu/courses/cs711/2005fa/papers/andersen-thesis94.pdf},
+	institution = {{DIKU}, University of Copenhagen},
+	type = {phdthesis},
+	author = {Andersen, Lars},
+	date = {1994-05},
+	file = {andersen-thesis94.pdf:C\:\\Users\\Victor\\Zotero\\storage\\7DI6DNVM\\andersen-thesis94.pdf:application/pdf;andersen-thesis94.pdf:C\:\\Users\\Victor\\Zotero\\storage\\Z3KQJYPV\\andersen-thesis94.pdf:application/pdf},
+}
+
+@article{chen_source-level_2023,
+	title = {A Source-Level Instrumentation Framework for the Dynamic Analysis of Memory Safety},
+	volume = {49},
+	issn = {1939-3520},
+	url = {https://ieeexplore.ieee.org/document/9905988/},
+	doi = {10.1109/TSE.2022.3210580},
+	abstract = {Low-level control makes C unsafe, resulting in memory errors that can lead to data corruption, security vulnerabilities or program crashes. Dynamic analysis tools, which have been widely used for detecting memory errors at runtime, usually perform instrumentation at the {IR} or binary level. However, these non-source-level instrumentation frameworks and tools suffer from two inherent drawbacks: optimization sensitivity and platform dependence. Due to optimization sensitivity, the user of these tools must trade either performance for effectiveness by compiling the program at -O0 or effectiveness for performance by compiling the program at a higher optimization level, say, -O3. In this paper, we propose a new source-level instrumentation framework to overcome these two drawbacks, and implement it in a new dynamic analysis tool, called Movec, that adopts a pointer-based monitoring algorithm. We have evaluated Movec comprehensively by using the {NIST}'s {SARD} benchmark suite (1152 programs), a set of 126 microbenchmarks (with ground truth), a set of 20 {MiBench} benchmarks and 5 pure-C {SPEC} {CPU} 2017 benchmarks. In terms of effectiveness, Movec outperforms three state-of-the-art dynamic analysis tools, {AddressSanitizer}, {SoftBoundCETS} and Valgrind, for all the standard optimization levels (from -O0 to -O3). In terms of performance, Movec outperforms {SoftBoundCETS} and Valgrind, and is slower than {AddressSanitizer} but consumes less memory.},
+	pages = {2107--2127},
+	number = {4},
+	journaltitle = {{IEEE} Transactions on Software Engineering},
+	author = {Chen, Zhe and Zhang, Qi and Wu, Jun and Yan, Junqi and Xue, Jingling},
+	urldate = {2025-05-20},
+	date = {2023-04},
+	keywords = {Benchmark testing, Instruments, Aerodynamics, bug finding, code instrumentation, Codes, dynamic analysis, Heuristic algorithms, memory errors, Monitoring, Optimization, Software quality, software testing},
+}
+
+@article{xu_melton_2015,
+	title = {Melton: a practical and precise memory leak detection tool for C programs},
+	volume = {9},
+	issn = {2095-2228},
+	doi = {10.1007/s11704-014-3460-8},
+	abstract = {Memory leaks are a common type of defect that is hard to detect manually. Existing memory leak detection tools suffer from lack of precise interprocedural analysis and path-sensitivity. To address this problem, we present a static interprocedural analysis algorithm, that performs fully pathsensitive analysis and captures precise function behaviors, to detect memory leak in C programs. The proposed algorithm uses path-sensitive symbolic execution to track memory actions in different program paths guarded by path conditions. A novel analysis model called memory state transition graph （{MSTG}） is proposed to describe the tracking process and its results. In order to do interprocedural analysis, the proposed algorithm generates a summary for each procedure from {MSTG} and applies the summary at the procedure＇s call sites. A prototype tool called Melton is implemented for this procedure. Melton was applied to five open source C programs and 41 leaks were found. More than 90\% of these leaks were subsequently confirmed and fixed by their maintainers. For comparison with other tools, Melton was also applied to some programs in standard performance evaluation corporation （{SPEC}） {CPU} 2000 benchmark suite and detected more leaks than the state of the art approaches.},
+	pages = {34--54},
+	number = {1},
+	journaltitle = {Frontiers of Computer Science},
+	author = {{XU}, Zhenbo and {ZHANG}, Jian and {XU}, Zhongxing},
+	date = {2015},
+	note = {Place: Heidelberg
+Publisher: Higher Education Press},
+	keywords = {Computer science, Algorithms},
+}
+
+@article{pancholi_timeloops_2022,
+	title = {Timeloops: Automatic System Call Policy Learning for Containerized Microservices},
+	url = {https://arxiv.org/abs/2204.06131},
+	doi = {10.48550/arxiv.2204.06131},
+	shorttitle = {Timeloops},
+	abstract = {In this paper we introduce Timeloops a novel technique for automatically
+learning system call filtering policies for containerized microservices
+applications. At run-time, Timeloops automatically learns which system calls a
+program should be allowed to invoke while rejecting attempts to call spurious
+system calls. Further, Timeloops addresses many of the shortcomings of
+state-of-the-art static analysis-based techniques, such as the ability to
+generate tight filters for programs written in interpreted languages such as
+{PHP}, Python, and {JavaScript}. Timeloops has a simple and robust implementation
+because it is mainly built out of commodity, and proven, technologies such as
+seccomp-{BPF}, systemd, and Podman containers, with fewer than 500 lines of code.
+We demonstrate the utility of Timeloops by learning system calls for individual
+services and two microservices benchmark applications, which utilize popular
+technologies like Python Flask, Nginx (with {PHP} and Lua modules), Apache
+Thrift, Memcached, Redis, and {MongoDB}. Further, the amortized performance of
+Timeloops is similar to that of an unhardened system while producing a smaller
+system call filter than state-of-the-art static analysis-based techniques.},
+	author = {Pancholi, Meghna and Kellas, Andreas D. and Kemerlis, Vasileios P. and Sethumadhavan, Simha},
+	urldate = {2025-05-20},
+	date = {2022},
+}
+
+@inproceedings{kirth_pkru-safe_2022,
+	location = {Rennes France},
+	title = {{PKRU}-safe: automatically locking down the heap between safe and unsafe languages},
+	isbn = {978-1-4503-9162-7},
+	url = {https://dl.acm.org/doi/10.1145/3492321.3519582},
+	doi = {10.1145/3492321.3519582},
+	shorttitle = {{PKRU}-safe},
+	abstract = {After more than twenty-five years of research, memory safety violations remain one of the major causes of security vulnerabilities in real-world software. Memory-safe languages, like Rust, have demonstrated that compiler technology can assist developers in writing efficient low-level code without the risk of memory corruption. However, many memory-safe languages still have to interface with unsafe code to some extent, which opens up the possibility for attackers to exploit memory-corruption vulnerabilities in the unsafe part of the system and subvert the safety guarantees provided by the memory-safe language.},
+	eventtitle = {{EuroSys} '22: Seventeenth European Conference on Computer Systems},
+	pages = {132--148},
+	booktitle = {Proceedings of the Seventeenth European Conference on Computer Systems},
+	publisher = {{ACM}},
+	author = {Kirth, Paul and Dickerson, Mitchel and Crane, Stephen and Larsen, Per and Dabrowski, Adrian and Gens, David and Na, Yeoul and Volckaert, Stijn and Franz, Michael},
+	urldate = {2025-05-20},
+	date = {2022-03-28},
+	langid = {english},
+	keywords = {Technology, Compilers, Security, Compartmentalization, Computer Science, Computer Science, Hardware \& Architecture, Computer Science, Information Systems, Computer Science, Software Engineering, Computer Science, Theory \& Methods, {MPK}, Science \& Technology},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\LDH3FNY9\\Kirth et al. - 2022 - PKRU-safe automatically locking down the heap between safe and unsafe languages.pdf:application/pdf},
+}
+
+@inproceedings{guo_bulkhead_2025,
+	location = {San Diego, {CA}, {USA}},
+	title = {{BULKHEAD}: Secure, Scalable, and Efficient Kernel Compartmentalization with {PKS}},
+	isbn = {979-8-9894372-8-3},
+	url = {https://www.ndss-symposium.org/wp-content/uploads/2025-s328-paper.pdf},
+	doi = {10.14722/ndss.2025.230328},
+	shorttitle = {{BULKHEAD}},
+	abstract = {The endless stream of vulnerabilities urgently calls for principled mitigation to confine the effect of exploitation. However, the monolithic architecture of commodity {OS} kernels, like the Linux kernel, allows an attacker to compromise the entire system by exploiting a vulnerability in any kernel component. Kernel compartmentalization is a promising approach that follows the least-privilege principle. However, existing mechanisms struggle with the trade-off on security, scalability, and performance, given the challenges stemming from mutual untrustworthiness among numerous and complex components.},
+	eventtitle = {Network and Distributed System Security Symposium},
+	booktitle = {Proceedings 2025 Network and Distributed System Security Symposium},
+	publisher = {Internet Society},
+	author = {Guo, Yinggang and Wang, Zicheng and Bai, Weiheng and Zeng, Qingkai and Lu, Kangjie},
+	urldate = {2025-05-20},
+	date = {2025},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\9ZT53GI9\\Guo et al. - 2025 - BULKHEAD Secure, Scalable, and Efficient Kernel Compartmentalization with PKS.pdf:application/pdf},
+}
+
+@inproceedings{huang_taming_2022,
+	location = {San Diego, {CA}, {USA}},
+	title = {The Taming of the Stack: Isolating Stack Data from Memory Errors},
+	isbn = {978-1-891562-74-7},
+	url = {https://www.ndss-symposium.org/wp-content/uploads/2022-60-paper.pdf},
+	doi = {10.14722/ndss.2022.23060},
+	shorttitle = {The Taming of the Stack},
+	abstract = {Despite vast research on defenses to protect stack objects from the exploitation of memory errors, much stack data remains at risk. Historically, stack defenses focus on the protection of code pointers, such as return addresses, but emerging techniques to exploit memory errors motivate the need for practical solutions to protect stack data objects as well. However, recent approaches provide an incomplete view of security by not accounting for memory errors comprehensively and by limiting the set of objects that can be protected unnecessarily. In this paper, we present the {DATAGUARD} system that identiﬁes which stack objects are safe statically from spatial, type, and temporal memory errors to protect those objects efﬁciently. {DATAGUARD} improves security through a more comprehensive and accurate safety analysis that proves a larger number of stack objects are safe from memory errors, while ensuring that no unsafe stack objects are mistakenly classiﬁed as safe. {DATAGUARD}’s analysis of server programs and the {SPEC} {CPU}2006 benchmark suite shows that {DATAGUARD} improves security by: (1) ensuring that no memory safety violations are possible for any stack objects classiﬁed as safe, removing 6.3\% of the stack objects previously classiﬁed safe by the Safe Stack method, and (2) blocking exploit of all 118 stack vulnerabilities in the {CGC} Binaries. {DATAGUARD} extends the scope of stack protection by validating as safe over 70\% of the stack objects classiﬁed as unsafe by the Safe Stack method, leading to an average of 91.45\% of all stack objects that can only be referenced safely. By identifying more functions with only safe stack objects, {DATAGUARD} reduces the overhead of using Clang’s Safe Stack defense for protection of the {SPEC} {CPU}2006 benchmarks from 11.3\% to 4.3\%. Thus, {DATAGUARD} shows that a comprehensive and accurate analysis can both increase the scope of stack data protection and reduce overheads.},
+	eventtitle = {Network and Distributed System Security Symposium},
+	booktitle = {Proceedings 2022 Network and Distributed System Security Symposium},
+	publisher = {Internet Society},
+	author = {Huang, Kaiming and Huang, Yongzhe and Payer, Mathias and Qian, Zhiyun and Sampson, Jack and Tan, Gang and Jaeger, Trent},
+	urldate = {2025-05-20},
+	date = {2022},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\QDIJEPI8\\Huang et al. - 2022 - The Taming of the Stack Isolating Stack Data from Memory Errors.pdf:application/pdf},
+}
+
+@inproceedings{shanbhogue_security_2019,
+	location = {New York, {NY}, {USA}},
+	title = {Security Analysis of Processor Instruction Set Architecture for Enforcing Control-Flow Integrity},
+	isbn = {978-1-4503-7226-8},
+	url = {https://dl.acm.org/doi/10.1145/3337167.3337175},
+	doi = {10.1145/3337167.3337175},
+	series = {{HASP} '19},
+	abstract = {Intel has developed Control-flow Enforcement Technology ({CET}) [27] that provides {CPU} instruction set architecture ({ISA}) capabilities to defend against Return-oriented Programming ({ROP}) and call/jmp-oriented programming ({COP}/{JOP}) style control-flow subversion attacks. This attack methodology uses code sequences in authorized modules with at least one instruction in the sequence being a control transfer instruction that depends on attacker-controlled data either in the return stack or in a register/memory for the target address. Attackers stitch these sequences together by diverting the control flow instruction (e.g. {RET}, {CALL}, {JMP}) from its original target address to a new target (via modification in the data stack or in the register or memory used by these instructions). This paper describes {CET} security objectives, threat model and various architectural design choices to ensure that the design meets the security objectives. We conclude the paper with performance data and related work in this domain.},
+	pages = {1--11},
+	booktitle = {Proceedings of the 8th International Workshop on Hardware and Architectural Support for Security and Privacy},
+	publisher = {Association for Computing Machinery},
+	author = {Shanbhogue, Vedvyas and Gupta, Deepak and Sahita, Ravi},
+	urldate = {2025-05-21},
+	date = {2019-06-23},
+	file = {Full Text PDF:C\:\\Users\\Victor\\Zotero\\storage\\MPDPM6WV\\Shanbhogue et al. - 2019 - Security Analysis of Processor Instruction Set Architecture for Enforcing Control-Flow Integrity.pdf:application/pdf},
+}
+
+@inproceedings{memarian_into_2016,
+	location = {New York, {NY}, {USA}},
+	title = {Into the depths of C: elaborating the de facto standards},
+	isbn = {978-1-4503-4261-2},
+	url = {https://dl.acm.org/doi/10.1145/2908080.2908081},
+	doi = {10.1145/2908080.2908081},
+	series = {{PLDI} '16},
+	shorttitle = {Into the depths of C},
+	abstract = {C remains central to our computing infrastructure. It is notionally defined by {ISO} standards, but in reality the properties of C assumed by systems code and those implemented by compilers have diverged, both from the {ISO} standards and from each other, and none of these are clearly understood. We make two contributions to help improve this error-prone situation. First, we describe an in-depth analysis of the design space for the semantics of pointers and memory in C as it is used in practice. We articulate many specific questions, build a suite of semantic test cases, gather experimental data from multiple implementations, and survey what C experts believe about the de facto standards. We identify questions where there is a consensus (either following {ISO} or differing) and where there are conflicts. We apply all this to an experimental C implemented above capability hardware. Second, we describe a formal model, Cerberus, for large parts of C. Cerberus is parameterised on its memory model; it is linkable either with a candidate de facto memory object model, under construction, or with an operational C11 concurrency model; it is defined by elaboration to a much simpler Core language for accessibility, and it is executable as a test oracle on small examples. This should provide a solid basis for discussion of what mainstream C is now: what programmers and analysis tools can assume and what compilers aim to implement. Ultimately we hope it will be a step towards clear, consistent, and accepted semantics for the various use-cases of C.},
+	pages = {1--15},
+	booktitle = {Proceedings of the 37th {ACM} {SIGPLAN} Conference on Programming Language Design and Implementation},
+	publisher = {Association for Computing Machinery},
+	author = {Memarian, Kayvan and Matthiesen, Justus and Lingard, James and Nienhuis, Kyndylan and Chisnall, David and Watson, Robert N. M. and Sewell, Peter},
+	urldate = {2025-05-21},
+	date = {2016-06-02},
+	file = {Full Text PDF:C\:\\Users\\Victor\\Zotero\\storage\\4GJC3HBF\\Memarian et al. - 2016 - Into the depths of C elaborating the de facto standards.pdf:application/pdf},
+}
+
+@inproceedings{serebryany_addresssanitizer_2012,
+	title = {\{{AddressSanitizer}\}: A Fast Address Sanity Checker},
+	url = {https://www.usenix.org/conference/atc12/technical-sessions/presentation/serebryany},
+	shorttitle = {\{{AddressSanitizer}\}},
+	eventtitle = {2012 {USENIX} Annual Technical Conference ({USENIX} {ATC} 12)},
+	pages = {309--318},
+	author = {Serebryany, Konstantin and Bruening, Derek and Potapenko, Alexander and Vyukov, Dmitriy},
+	urldate = {2025-05-22},
+	date = {2012},
+	langid = {english},
+	file = {Full Text PDF:C\:\\Users\\Victor\\Zotero\\storage\\F6DDVP4N\\Serebryany et al. - 2012 - AddressSanitizer A Fast Address Sanity Checker.pdf:application/pdf},
+}
+
+@article{chen_non-control-data_nodate,
+	title = {Non-Control-Data Attacks Are Realistic Threats},
+	abstract = {Most memory corruption attacks and Internet worms follow a familiar pattern known as the control-data attack. Hence, many defensive techniques are designed to protect program control flow integrity. Although earlier work did suggest the existence of attacks that do not alter control flow, such attacks are generally believed to be rare against real-world software. The key contribution of this paper is to show that non-control-data attacks are realistic. We demonstrate that many real-world applications, including {FTP}, {SSH}, Telnet, and {HTTP} servers, are vulnerable to such attacks. In each case, the generated attack results in a security compromise equivalent to that due to the controldata attack exploiting the same security bug. Non-control-data attacks corrupt a variety of application data including user identity data, configuration data, user input data, and decision-making data. The success of these attacks and the variety of applications and target data suggest that potential attack patterns are diverse. Attackers are currently focused on control-data attacks, but it is clear that when control flow protection techniques shut them down, they have incentives to study and employ non-control-data attacks. This paper emphasizes the importance of future research efforts to address this realistic threat.},
+	author = {Chen, Shuo and Xu, Jun and Sezer, Emre C and Gauriar, Prachi and Iyer, Ravishankar K},
+	langid = {english},
+	file = {PDF:C\:\\Users\\Victor\\Zotero\\storage\\3DDZ7QJR\\Chen et al. - Non-Control-Data Attacks Are Realistic Threats.pdf:application/pdf},
 }

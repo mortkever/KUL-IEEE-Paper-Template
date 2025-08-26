@@ -16,13 +16,11 @@ citestyle=numeric-comp, maxnames=50, maxcitenames=1]{biblatex}
 \input{abbreviations.tex}
 \begin{document}
 
-\title{Conference Paper Title*\\
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
+\title{PTAsan: Detecting Unsoundness in Pointer Analysis Results\\
+{\footnotesize \textsuperscript{*}The Unharmoniuous Truth of Unsound Pointer Analysis}
 }
 
-\author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
+\author{\IEEEauthorblockN{1\textsuperscript{st} Victor Deforce}
     \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
         \textit{name of organization (of Aff.)}\\
         City, Country \\
@@ -62,20 +60,126 @@ should not be used}
 \maketitle
 
 \begin{abstract}
-    This document is a model and instructions for \LaTeX.
-    This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes,
-    or Math in Paper Title or Abstract.
+    Een heel aantal toepassingen maken gebruik van pointer analysis: compiler optimalization, Data Flow Integrity (DFI), control flow integrity, compartmentalization, etc. 
+Hoewel het algemeen geweten is dat deze analyses een overschatting zijn, staat men er zelden bij stil dat de analyse ook points-to sets kan ónderschatten. Deze onderschatting 
+van points-to sets door 
+deze tools is nefast voor toepassingen zoals DFI en compartmentilization. Deze toepassingen steunen
+op de overschatting van de set van adressen, die een lees- of schrijfinstructie kan benaderen, met
+crashes op willekeurige momenten tot gevolg als dit niet zo is.
+Er is geen punt aan veiligheidsmechanismes zoals DFI, als ze random crashes veroorzaken doordat de 
+points-to sets te beperkend zijn.
+Er is dus een
+duidelijke kloof tussen ontwikkelaars van deze pointer analysis tools, die de veronderstellingen en
+limieten in hun implementatie kennen, en de ontwikkelaars die deze tools gebruiken in hun
+toepassingen. 
+
+In deze thesis hebben we de PTAsan, Pointer Analysis sanitizer, ontwikkeld om de
+aanwezigheid van unsoundness in veel gebruikte pointer analyses empirisch te meten. De PTAsan
+geeft ons inzicht in de oorzaak van de unsoundness via uitgebreide logging. We hebben de PTAsan
+geïmplementeerd als een DFI-like controlesysteem en we instrumenteren testcode door middel van
+LLVM. We hebben o.a. de Andersen pointer analysis van SVF getest op de SPEC CPU2006
+benchmarking suite en vastgesteld dat tot 2\% van de points-to sets unsound zijn. Aangezien grotere
+programma's zoals GCC bestaan uit meer dan honderdduizend points-to sets, zorgt dit voor
+onpraktisch veel crashes in bijvoorbeeld DFI. We hebben manueel enkele van deze bronnen van
+unsoundness opgespoord en gerapporteerd aan de ontwikkelaars van SVF.
 \end{abstract}
 
 \begin{IEEEkeywords}
-    component, formatting, style, styling, insert
+    Pointer analysis, data-flow integrity, SVF, Soundness, soundiness
 \end{IEEEkeywords}
 
-\section{Introduction}
-This document is a model and instructions for \LaTeX.
-Please observe the conference page limits.
+\section{Introductie}
+Dezelfde vrijheid die pointers geeft in C en C++ zorgt er ook voor dat programma's geschreven in deze taal gevoelig zijn voor aanvallen met geheugen exploits. 
+Doorheen de jaren zijn tal van oplossingen uitgewerkt waaronder \gls{dfi}\cite{castro_securing_nodate} en WIT\cite{akritidis_preventing_2008}. \gls{dfi} bepaald 
+statisch, met een pointer analyse, voor elke lees en schrijf instructie de (points-to) set van objecten die deze instructie zal kunnen benaderen onder normale 
+omstandigheden. Terwijl het programma loopt, dwingt \gls{dfi} deze sets af door het programma te laten crashen indien de instructie benadert dat niet in de set zit. 
+Als bijvoorbeeld een aanvaller de normale verloop van het programma probeert te wijzigen door return adressen te overschrijven, dan zal \gls{dfi} dit detecteren en 
+de aanval afwenden.
 
-\section{Ease of Use}
+Om dus een goede werking te garanderen mag de statische analyse geen onderschatting maken van de objecten in de points-to set. Als analyse objecten mist in de set kan 
+dit leiden tot spontane crashes in het programma wanneer er geen aanval gaande is. Hoewel dat ontwikkelaars die deze analyses gebruiken zich over het algemeen bewust 
+van de overschattingen die een pointer analyse maakt, staat men er zelden bij stil dat de analyse ook sets kan onderschatten.
+Pointer analyses worden in vele toepassingen gebruikt. We delen ze daarom hier op in twee groepen. Voor de eerste groep gebruiken we de term \textbf{offensieve pointer analyse}.
+Deze analyses worden voornamelijk gebruikt voor allerhande bugdetectie tools: memory leaks, ongeïnitilaiseerde variabelen, 
+etc.\cite{sui_svf_nodate}\cite{cherem_practical_nodate}\cite{ye_accelerating_nodate}. Daarnaast zijn er, wat Smaragdakis\cite{smaragdakis_defensive_2018} noemt 
+\textbf{defensieve pointer analysis}. Deze worden gebruikt o.a.\ door \gls{dfi}\cite{castro_securing_nodate}\cite{diez-franco_optimized_2024}, 
+\gls{cfi}\cite{kasten_integrating_2024}\cite{li_finding_2020} en een aantal compiler optimalisaties\cite{hind_interprocedural_1999}. 
+
+We maken het onderscheid tussen deze twee groepen aangezien hun verwachtingen loodrecht op elkaar staan. Voor bijvoorbeeld het detecteren van memory leaks heeft men 
+een analyse nodig die snel en precies is\cite{cherem_practical_nodate}\cite{fan_smoke_2019}. Want de analyse draait mogelijks in de IDE en men ziet liefst zo weinig 
+mogelijk foute raporteringen. Het is minder relevant dat de detector enkele leaks mist, aangezien de resultaten in vergelijking met andere implementaties worden gepubliceerd.
+Een analyse die hier aan voldoet noemen we een offfensieve analyse.
+
+Toepassingen die een defensieve pointer analyses gebruiken zoals \gls{dfi}, verwachten ook een zekere precisie maar steunen op de garantie dat de sets niet onderschat zijn en dus 
+sound zijn. Zoals eerder vermeld leidt een onderschatting van de sets tot een analyse die niet functioneert. We gebruiken dan ook de term defensief om te duiden welke garanties deze 
+analyses zouden moeten stellen. Voor zover ons bekend, bestaan er slechts drie analyses die beweren defensief te zijn.\cite{smaragdakis_defensive_2018}\cite{cai_unleashing_nodate}\cite{lu_practical_2023}
+
+Hoewel het aantal defensieve analyses beperkt is en de ontwikkelaars zich wel bewust zijn van de bperkingen in hun implementaties\cite{vojnar_phasar_2019}, beseffen weinig 
+developers die de analyses gebruiken dat deze sound zijn. Vele zijn dus overhead en compatibiliteits problemen als de voornaamste obstakels\cite{mathiasen_fine-grained_2021}\cite{bellec_rt-dfi_2022}\cite{diez-franco_optimized_2024}\cite{feng_toward_2022} 
+voor \gls{dfi} buiten de onderzoekswereld gebruikt kan worden. Echter zonder sound pointer analyse, zal \gls{dfi} voor random crashes blijven zorgen en dus niet ingezet worden.
+
+Om voor unsoundness te corrigeren voegen sommigen developers van toepassingen een profiling phase toe aan hun implementatie\cite{jin_annotating_2022}\cite{kirth_pkru-safe_2022}.
+In deze fase voegen gemiste objecten toe aan de sets tijdens test runs om zo crashes te vermijden tijdens de benchmarks. Dynamische analyses hebben echter een coverage probleem 
+want met de test cases waarmee het programma is getest, kan men zelden het volledige gedrag van het programma opbouwen. Het programma is dus sound voor de testcases maar 
+waarschijnlijk niet voor andere inputs.
+
+In het soundiness manifesto\cite{livshits_defense_2015} doet een groep van pointer analysis onderzoekers een oproep voor meer 
+transparantie. Ze stellen dat soundness een afweging vereist met precisisie en schaalbaarheid. Bepaald gedrag in een programma, 
+zoals pointer arithmitic, maken het moeilijk om precies de points-to sets van een pointer te bepalen. Men stelt dus de term 
+soundiness voor, het sound behandelen van de meeste language features maar het bewust onderschatten van sets voor zekere 
+ver onderzochte feature set. 
+
+Om de verregaande aanwezigheid van unsoundness te empirisch te bewijzen en te quantificeren hebben we PTAsan ontwikkelt, pointer analysis 
+sanitizer. Onze implemetnatie laat ons toe alle fouten in de points-to set voor een gegeven test programma te loggen en de oorzaak terug 
+te volgen tot aan zijn bron. 
+
+\section{Achtergrond}
+
+\subsection{Betekenis van soundness}
+In het engels kunnen de termen sound of soundness gebruikt worden om aan te geven dat iets correct werkt. Afhankelijk van de verwachtingen die men stelt kan hetzelfde dus tegelijk sound en unsound zijn. Zoals in de inleiding al aangegeven kan er een onderscheid in points-to analyses gemaakt worden tussen defensieve en offensieve. Afhankelijk van de categorie kan een resultaat hier dus ook sound of unsound zijn.
+
+Voor offensieve analyses is het doel om precise sets af te leveren die dus een zo klein mogleijk overschatting maken. Als de set meer objecten bevat dan dat werkelijk mogelijk is, duiden mogelijk toepassingen zoals bugdetectie fouten aan waar er geen zijn. Voor de eindgebruiker is dit niet gewenst. Een analyse die teveel overschatting doet in de sets kan men dus als unsound beschouwen.
+
+Voor defensieve analyses is het van belang dat de set exhaustief is. Voor bijvoorbeeld \gls{dfi} zorgt een overschatting dat de veiligheidsgaranties minder sterk zijn, een onderschatting maakt echter het veiligheidsmechanisme rechtuit onbruikbaar. Een defensieve analyse is dus enkel sound als deze geen onderschatte sets als resultaat levert. Dit is al duidelijk in sterk contrast met de offensieve analyses. 
+
+Verder kan de nuance dieper worden doorgetrokken op vlak defensieve analyses. C en C++ laten de programeur veel vrijheid. Hoe defensief een analyse is kan dus afgemeten worden aan de hand van de bizarre, door programeurs bedachte, constructies die nog door de analyse sound worden afgehandeld. 
+
+Men zou bijvoorbeeld typisch een access van één object via de pointer van een ander object beschouwen als een memory error. Echter sommige programeurs passen volgende techniek toe. Ze berekenen de offset tussen de adressen van twee objecten en slaan deze op. Op een later moment gebruiken ze deze offset en de pointer van één van de twee objecten om het andere object te benaderen. Dit noemt men relative pointers. 
+
+Een ander fenomeen waar men op de site van het soundiness manifesto\cite{noauthor_soundiness_nodate} voor bewustzijn voor pleit, is mogelijke buffer overflows. Naar onze mening is dit buiten het correct gedrag van het programma en hoort een analyse hier dus geen rekening mee te nemen. Het sound verwerken van dit fenomeen zou echter de analyse een meer sound resultaat doen geven in relatie tot de reële werking van het programma. 
+
+\subsection{Cascades van unsoundness}
+
+Problemen met soundness 
+
+Cascade effect van unsoundness in het analyse resultaat. 
+
+
+\section{Implementatie}
+In deze paper leggen de werking uit van PTAsan, de points-to analysis sanitizer. Met PTAsan hebben we als doel het aantal fouten in points-to analysis tools op te meten en voldoende informatie te verzamelen om de oorsprong van deze fouten op te sporen. We doen dit door middel van een door \gls{dfi} geinspireerde implementatie.
+
+Zoals bij \gls{dfi} bestaat PTAsan uit een compiletime component en een runtime component. At compiletime laten we de te testen points-to analysis de points-to sets opstellen voor de test case. Op basis van deze sets instrumenteren we dan zelf verder het test programma. 
+
+Om elementen uit de sets duidelijk te linken met hun runtime equivalent geven we elk element een uniek kleur. We weten namelijk niet at compiletime waar eenspeciefiek object gealloceerd zal worden en kunnen dus pas at runtime een kleur toekennen aan een specifiek stuk geheugen. Aangezien elk element in een set slaat op een unieke allocation site, niet een uniek object, kunnen we achter elke allocation site een coloring functie invoegen. Deze kleuren zijn 16-bit integers en worden deterministisch toegekent om het traceren van unsoundness te vereenvoudigen.
+
+Deze manier van instrumenteren is geschikt voor statische en dynamische allocaties, echter voor globals die niet worden gealloceert hebben we een andere aanpak nodig. Voor deze injecteren we een volledig nieuwe functie in de test code. In deze code roepen we voor elke global in het programma de coloring functie op. 
+
+Naast het kleuren van alle allocatie sites, controleren we ook de kleur van een object bij een memory access. We voegen hiervoor ook een function call toe. Aan de color check functie geven we het adres mee van het object en de set van kleuren mee die overeen komen met points-to set van de pointer operand van de access. Verder geven we ook een uniek id mee om unsound accesses te kunnen linken aan de instructie. In de functie verifiëren we of de kleur van het object in de set zit. Als dit het geval is keert de controle terug naar het programma, als dit niet het geval is loggen we de unsound access door middel van de kleur van het object en de id van de instructie.
+
+%Functies uit dynamisch gelinkte libraries kunnen we niet instrumenteren. Hoewel we wel dynamische allocaties instrumenteren, die ook binnen deze categorie vallen, weten we alleen 
+Om deze mechanismen te ondersteunen implementeren een aantal functies en datastructuren door middel van een library. De voornaamste data structuur is de color table. Deze bevat voor elke blok van 16 bytes een color. Deze granulariteit is in lijn met minimum grootte van een heap allocated object. Verder definiëren ook een initialisatie functie met constructor attribuut die de color table alloceert alsook de global coloring functie aanroept. Door het constructor attribuut wordt deze functie uitgevoerd voor de main van het test programma. Dit garandeerd dat alle setup gebeurd is voor de eerste instructie van het programma zelf wordt uitgevoerd.
+
+Daarnaast bevat onze library ook code om te differentiëren tussen kleurloze objecten. Alleen allocation sites die element zijn van een set krijgen een kleur. Als de points-to analysis dus een bepaalde allocation site niet herkent dan kleuren we deze niet. Dit is voornamelijk een risico bij externe library functies glibc. Deze libraries worden dynamisch gelinkt dus at compiletime is de sourcecode niet beschikbaar. Om dit op te lossen houdt *** (naar background?) een analyse een karakterisatie bij van het pointer gedrag in de deze functie. Echter als deze karakterisering fout is opgesteld, dan kan dit tot unsoundness leiden. Bijvoorbeeld malloc geeft een pointer terug naar nieuw gealloceerd geheugen. Met een foute karakterisering of zelfs met een gebrek aan, ziet de pointer analyse elke malloc niet als een allocation site. 
+
+Via allocator interpostion kunnen we het onderscheid maken tussen allocaties door externe libraries (dynamic allocations) en door andere methoden. Aangezien statisch gelinkte functies eerst gebruikt worden, kunnen we zelf functies definiëren met de naam malloc, calloc, etc. In deze functie kunnen we, als de oorspronkelijke call extern was, een deel van de stacktrace registreren. Het bestaan van deze trace bij een latere unsound access toont dat het object extern gealloceerd was. Als de callchain tussen de eerste externe call en de allocatie niet te groot is kan uit de trace ook worden afgeleid welke functie verkeerd is karakteriseerd door de points-to analysis. In de huidige implementatie is deze slechts 1 call diep.
+
+
+
+\section{Resultaten} 
+
+
+
+\section{Conclusie}
 
 \subsection{Maintaining the Integrity of the Specifications}
 

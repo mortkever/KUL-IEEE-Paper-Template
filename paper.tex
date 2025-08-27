@@ -173,17 +173,30 @@ Om deze mechanismen te ondersteunen implementeren een aantal functies en datastr
 
 Daarnaast bevat onze library ook code om te differentiëren tussen kleurloze objecten. Alleen allocation sites die element zijn van een set krijgen een kleur. Als de points-to analysis dus een bepaalde allocation site niet herkent dan kleuren we deze niet. Dit is voornamelijk een risico bij externe library functies glibc. Deze libraries worden dynamisch gelinkt dus at compiletime is de sourcecode niet beschikbaar. Om dit op te lossen houdt *** (naar background?) een analyse een karakterisatie bij van het pointer gedrag in de deze functie. Echter als deze karakterisering fout is opgesteld, dan kan dit tot unsoundness leiden. Bijvoorbeeld malloc geeft een pointer terug naar nieuw gealloceerd geheugen. Met een foute karakterisering of zelfs met een gebrek aan, ziet de pointer analyse elke malloc niet als een allocation site. 
 
-Via allocator interpostion kunnen we het onderscheid maken tussen allocaties door externe libraries (dynamic allocations) en door andere methoden. Aangezien statisch gelinkte functies eerst gebruikt worden, kunnen we zelf functies definiëren met de naam malloc, calloc, etc. In deze functie kunnen we, als de oorspronkelijke call extern was, een deel van de stacktrace registreren. Het bestaan van deze trace bij een latere unsound access toont dat het object extern gealloceerd was. Als de callchain tussen de eerste externe call en de allocatie niet te groot is kan uit de trace ook worden afgeleid welke functie verkeerd is gekarakteriseerd door de points-to analysis. In de huidige implementatie is deze slechts 1 call diep.
+Via allocator interposition kunnen we het onderscheid maken tussen allocaties door externe libraries (dynamic allocations) en door andere methoden. Aangezien statisch gelinkte functies eerst gebruikt worden, kunnen we zelf functies definiëren met de naam malloc, calloc, etc. In deze functie kunnen we, als de oorspronkelijke call extern was, een deel van de stacktrace registreren. Het bestaan van deze trace bij een latere unsound access toont dat het object extern gealloceerd was. Als de callchain tussen de eerste externe call en de allocatie niet te groot is kan uit de trace ook worden afgeleid welke functie verkeerd is gekarakteriseerd door de points-to analysis. In de huidige implementatie is deze slechts 1 call diep.
 
 \subsection{PTAsan CFI}
 Aangezien unsoundness een cascade effect kan hebben op de resultaten en control flow geen aspect is dat getest wordt onder de \gls{dfi} kant van PTAsan, hebben we een \gls{cfi} kant aan PTAsan toegevoegd. Deze detecteert fouten in het sets van function pointers. De combinatie van beide kanten garandeert ons dat we steeds het eerste soundness issue detecteren.
 
-We implemetneren de \gls{cfi} analoog aan de \gls{dfi} kant.
+We implementeren de \gls{cfi} analoog aan de \gls{dfi} kant. We laten de points-to analyse de points-to set opstellen voor elke functie pointer. We kennen aan elke address-taken functie een unieke kleur toe en we injecteren voor elke indirecte call een call naar de color check functie. At runtime wordt de color table gealloceerd en kleuren we direct de functies zoals we oo direct de globals kleuren bij opstart aan \gls{dfi} kant. Voor iedere indirect call controleren we of de opgeroepen functie in de set van de pointer zit. 
+
 \section{Resultaten} 
 
+Ons doel is om unsoundness te detecteren in de output van pointer analysis tools. Om zeker te zijn dat unsoundness die we detecteren geen product is van foute of kwaadaardige input, gebruiken we de SPEC CPU2006 benchmarking suite. Deze suite bestaat uit een verzameling van programma's met voor elk een aantal geldig test inputs. Deze programma's kunnen memory errors bevatten. 
 
+Our goal is to detect unsoundness in the results of pointer analysis tools. To be certain the detected unsoundness is not the result of malicious or erroneous 
+input, we use the SPEC CPU2006 benchmarking suite. This suite is comprised of a variety of programs written in C or C++ and has valid inputs included. These suites are often 
+used to test bug detection software\cite{xu_melton_2015}\cite{chen_source-level_2023}, so these programs may contain 
+memory errors. Depending on the defensiveness of the analysis these may or may not be considered valid program behaviour and thus may or may not be flagged as unsound.
+We ran our sanitizer with the SVF pointer analysis tool, version 2.5 and 3.0, with the Andersen implementations. SVF is a widely used pointer 
+analysis\cite{kasten_integrating_2024}\cite{guo_bulkhead_2025}\cite{huang_taming_2022}
+tool that has had unsound results attributed to it\cite{kasten_integrating_2024}. % TODO expand refs
+
+We ran PTAsan on a Intel(R) Xeon(R) Silver 4116 CPU with 125GB RAM.
 
 \section{Conclusie}
+
+PTAsan is een sanitizer die zijn van pointer analysis tools die zijn kracht toont door niet alleen een verzameling aan informatie ter beschikking stelt om de bron van unsoundness te traceren als ook garandeert dat het eerste soundness issue in de sets voor een programma gevonden kan worden. Verder hebben we met deze sanitizer aangetoond dat SVF unsound sets produceert voor variëteit aan test programma's en tot 2\% van alle sets unsound opstelt. We hebben verder de unsoundness voor ee naantal gevallen kunnen traceren tot niet de verwachte problemen, complexe programma structuren zoals relative pointers, maar tot unhandled language features, slecht gekarakteriseerde externe libraries en bugs in de analysis zelf.  
 
 \subsection{Maintaining the Integrity of the Specifications}
 

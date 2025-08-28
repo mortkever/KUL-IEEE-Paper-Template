@@ -17,44 +17,38 @@ citestyle=numeric-comp, maxnames=50, maxcitenames=1]{biblatex}
 \begin{document}
 
 \title{PTAsan: Detecting Unsoundness in Pointer Analysis Results\\
-{\footnotesize \textsuperscript{*}The Unharmoniuous Truth of Unsound Pointer Analysis}
+{\footnotesize \textsuperscript The Unharmoniuous Truth of Unsound Pointer Analysis}
 }
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Victor Deforce}
-    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-        \textit{name of organization (of Aff.)}\\
-        City, Country \\
-        email address or ORCID}
+    \IEEEauthorblockA{\textit{Distrinet} \\
+        \textit{KULeuven}\\
+        Gent België \\
+        r0793705@kuleuven.be}
     \and
-    \IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
-    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-        \textit{name of organization (of Aff.)}\\
-        City, Country \\
-        email address or ORCID}
+    \IEEEauthorblockN{2\textsuperscript{nd} Adriaan Jacobs}
+    \IEEEauthorblockA{\textit{Distrinet} \\
+        \textit{KULeuven}\\
+        Gent België \\
+        adriaan.jacobs@kuleuven.be}
     \and
-    \IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
-    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-        \textit{name of organization (of Aff.)}\\
-        City, Country \\
-        email address or ORCID}
+    \IEEEauthorblockN{3\textsuperscript{rd} Anton Schelfthout}
+    \IEEEauthorblockA{\textit{Distrinet} \\
+        \textit{KULeuven}\\
+        Gent België \\
+        anton.schelfthout@kuleuven.be}
+        \and
+    \IEEEauthorblockN{4\textsuperscript{th} Alicia Andries}
+    \IEEEauthorblockA{\textit{Distrinet} \\
+        \textit{KULeuven}\\
+        Gent België \\
+        alicia.andries@kuleuven.be}
     \and
-    \IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
-    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-        \textit{name of organization (of Aff.)}\\
-        City, Country \\
-        email address or ORCID}
-    \and
-    \IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
-    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-        \textit{name of organization (of Aff.)}\\
-        City, Country \\
-        email address or ORCID}
-    \and
-    \IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
-    \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-        \textit{name of organization (of Aff.)}\\
-        City, Country \\
-        email address or ORCID}
+    \IEEEauthorblockN{5\textsuperscript{th} Stijn Volckaert}
+    \IEEEauthorblockA{\textit{Distrinet} \\
+        \textit{KULeuven}\\
+        Gent België \\
+        stijn.volckaert@kuleuven.be}
 }
 
 \maketitle
@@ -173,7 +167,7 @@ Om deze mechanismen te ondersteunen implementeren een aantal functies en datastr
 
 Daarnaast bevat onze library ook code om te differentiëren tussen kleurloze objecten. Alleen allocation sites die element zijn van een set krijgen een kleur. Als de points-to analysis dus een bepaalde allocation site niet herkent dan kleuren we deze niet. Dit is voornamelijk een risico bij externe library functies glibc. Deze libraries worden dynamisch gelinkt dus at compiletime is de sourcecode niet beschikbaar. Om dit op te lossen houdt *** (naar background?) een analyse een karakterisatie bij van het pointer gedrag in de deze functie. Echter als deze karakterisering fout is opgesteld, dan kan dit tot unsoundness leiden. Bijvoorbeeld malloc geeft een pointer terug naar nieuw gealloceerd geheugen. Met een foute karakterisering of zelfs met een gebrek aan, ziet de pointer analyse elke malloc niet als een allocation site. 
 
-Via allocator interposition kunnen we het onderscheid maken tussen allocaties door externe libraries (dynamic allocations) en door andere methoden. Aangezien statisch gelinkte functies eerst gebruikt worden, kunnen we zelf functies definiëren met de naam malloc, calloc, etc. In deze functie kunnen we, als de oorspronkelijke call extern was, een deel van de stacktrace registreren. Het bestaan van deze trace bij een latere unsound access toont dat het object extern gealloceerd was. Als de callchain tussen de eerste externe call en de allocatie niet te groot is kan uit de trace ook worden afgeleid welke functie verkeerd is gekarakteriseerd door de points-to analysis. In de huidige implementatie is deze slechts 1 call diep.
+Via allocator interposition kunnen we het onderscheid maken tussen allocaties door externe libraries (dynamic allocations) en door andere methoden. Aangezien statisch gelinkte functies eerst gebruikt worden, kunnen we zelf functies definiëren met de naam malloc, calloc, etc. In deze functie kunnen we, als de oorspronkelijke call extern was, een deel van de stacktrace registreren. Het bestaan van deze trace bij een latere unsound access toont dat het object extern gealloceerd was. Als de callchain tussen de eerste externe call en de allocatie niet te groot is kan uit de trace ook worden afgeleid welke functie verkeerd is gekarakteriseerd door de points-to analysis. In de huidige implementatie is deze slechts 1 call hoog.
 
 \subsection{PTAsan CFI}
 Aangezien unsoundness een cascade effect kan hebben op de resultaten en control flow geen aspect is dat getest wordt onder de \gls{dfi} kant van PTAsan, hebben we een \gls{cfi} kant aan PTAsan toegevoegd. Deze detecteert fouten in het sets van function pointers. De combinatie van beide kanten garandeert ons dat we steeds het eerste soundness issue detecteren.
@@ -182,17 +176,60 @@ We implementeren de \gls{cfi} analoog aan de \gls{dfi} kant. We laten de points-
 
 \section{Resultaten} 
 
-Ons doel is om unsoundness te detecteren in de output van pointer analysis tools. Om zeker te zijn dat unsoundness die we detecteren geen product is van foute of kwaadaardige input, gebruiken we de SPEC CPU2006 benchmarking suite. Deze suite bestaat uit een verzameling van programma's met voor elk een aantal geldig test inputs. Deze programma's kunnen memory errors bevatten. 
+Ons doel is om unsoundness te detecteren in de output van pointer analysis tools. Om zeker te zijn dat unsoundness die we detecteren geen product is van foute of kwaadaardige input, gebruiken we de SPEC CPU2006 benchmarking suite. Deze suite bestaat uit een verzameling van programma's met voor elk een aantal geldig test inputs. Deze programma's kunnen memory errors bevatten. Deze errors zullen dus ook als unsoundness aanzien als de analyse hier geen rekening mee houdt. 
 
-Our goal is to detect unsoundness in the results of pointer analysis tools. To be certain the detected unsoundness is not the result of malicious or erroneous 
-input, we use the SPEC CPU2006 benchmarking suite. This suite is comprised of a variety of programs written in C or C++ and has valid inputs included. These suites are often 
-used to test bug detection software\cite{xu_melton_2015}\cite{chen_source-level_2023}, so these programs may contain 
-memory errors. Depending on the defensiveness of the analysis these may or may not be considered valid program behaviour and thus may or may not be flagged as unsound.
-We ran our sanitizer with the SVF pointer analysis tool, version 2.5 and 3.0, with the Andersen implementations. SVF is a widely used pointer 
-analysis\cite{kasten_integrating_2024}\cite{guo_bulkhead_2025}\cite{huang_taming_2022}
-tool that has had unsound results attributed to it\cite{kasten_integrating_2024}. % TODO expand refs
+We hebben onze sanitizer getest op SVF versies 2.5 en 3.0 met de Andersen implementatie. SVF is een veel gebruikte program analysis tool\cite{kasten_integrating_2024}\cite{guo_bulkhead_2025}\cite{huang_taming_2022} waarbij anderen al hebben ondervonden dat deze unsound is\cite{kasten_integrating_2024}. 
 
-We ran PTAsan on a Intel(R) Xeon(R) Silver 4116 CPU with 125GB RAM.
+We lieten onze test lopen op een Intel(R) Xeon(R) Silver 4116 CPU with 125GB RAM met Linux 6.12.33\-061233\-generic x86\_64.
+
+\begin{table}[htbp]
+    \begin{center}
+\begin{tabular}{|l|rr|r|}
+\hline
+Programs       & Unsound sets & Empty sets & Total \# sets \\ 
+\hline
+\hline
+Benchmark.ll   & 0   & 0     & 11550 \\ 
+401.bzip2      & 0   & 92    & 2587  \\ 
+429.mcf        & 0   & 1     & 471   \\ 
+444 namd       & 0   & 205   & 6106  \\ 
+462.libquantum & 0   & 2     & 245   \\ 
+470 lbm        & 0   & 5     & 281   \\ 
+473 astar      & 4   & 82    & 1353  \\ 
+458 sjeng      & 19  & 5     & 2738  \\ 
+464 h264ref    & 24  & 650   & 35701 \\ 
+471 omnetpp    & 27  & 84    & 23825 \\ 
+482 sphinx3    & 27  & 933   & 4503  \\ 
+400.perlbench  & 46  & 288   & 41042 \\ 
+445 gobmk      & 65  & 596   & 18637 \\ 
+456 hmmer      & 83  & 497   & 4712  \\ 
+450 soplex     & 84  & 3240  & 14583 \\ 
+433.milc       & 87  & 85    & 4127  \\ 
+453 povray     & 97  & 1282  & 38776 \\ 
+447 dealII     & 103 & 3084  & 20518 \\ 
+483 xalancbmk  & 954 & 22863 & 122611\\ 
+403.gcc        & 2590& 1550  & 140904\\ 
+\hline
+\end{tabular}
+\end{center}
+\caption{
+Deze table bevat per test case uit SPEC CPU2006 het aantal unsound sets, lege sets en het totaal aantal sets gemeten door PTAsan. Voor de complexere programma's is duidelijk een onaanvaardbaar hoog aantal unsound sets gedetecteerd. Slechts één unsound set is voldoende om ongewenste crashes te veroorzaken in \gls{dfi} of compartmentalization.
+}
+\end{table}
+
+Voor programma's met slechts beperkte complexiteit zoals mcf, lbm en namd zien we dat er geen unsound sets voorkomen. Voor deze is er geen duidelijk verband tussen het totaal aantal sets en het aantal unsound sets. Dit komt omdat De testing suite samengesteld is voor benchmarks. Bijvoorbeeld namd bevat code om de interacties tussen atomen te bereken. Deze code is echter uit de codebase van NAMD\footnote{https://www.ks.uiuc.edu/Research/namd/} afgezonderd en zal dus een minder complexe control flow hebben dan NAMD zelf. Hetzelfde geld voor bzip2 en benchmark.ll. Bij complexere programma's loopt het aantal unsound sets echter snel op. Dit aantal ligt onacceptabel hoog aangezien voor defensive dooleinden zoals \gls{dfi} en compartmentalization\cite{lefeuvre_sok_2024} slechts één unsound set al voor crashes opf ongewenst gedrag kan zorgen. 
+
+Verder zien we ook dat een heel aantal lege sets worden benaderd. Dit is positief aangezien SVF deze niet met zekerheid kan reduceren tot een eindige set. In de praktijk wordt een lege set aanzien als een set die alle kleuren bevat.
+
+\subsection{Gevonden bronnen van unsoundness}
+
+We hebben met de resultaten van PTAsan een aantal unsound access kunnen terug volgen tot hun bron. Een eerste bron van unsoundness is het incorrect afhandelen van het byval attribuut\footnote{https://llvm.org/docs/LangRef.html\#id1969} door SVF. Deze attribuut kan aan functie argumenten worden gegeven in LLVM IR en dit hierdoor wordt bij een call naar de functie steeds een kopie van dat argument genomen. SVF herkent deze attribuut niet en veronderstelt dat het object meegeven aan de functie, hetzelfde is als deze gebruikt in de functie. We zien hier dan ook dat dit object geen kleur krijgt toegekend en in geen sets vervat zit. Dit is duidelijk unsound gedrag. We hebben dit gemeld aan de ontwikkelaars van SVF en zij hebben besloten om SVF dit te laten ondersteunen\footnote{https://github.com/SVF-tools/SVF/issues/1679}.
+
+Verder vormt de incorrecte karakterisatie van externe library functies ook een bron van unsoundness. In het bijzonder de functies die steeds een pointer naar hetzelfde object teruggeven. We zouden bij deze pointers verwachten dat SVF ze als aliasing ziet. SVF karakteriseert ze echter als `ALLOC\_STACK\_RET', als functies die een pointer terug geven naar een nieuw gealloceerd object op de stack. Functie zoals gmtime functioneren niet op deze manier dus hebben we dit ook aan de ontwikkelaars van SVF gemeld\footnote{https://github.com/SVF-tools/SVF/issues/1680}. Ze hebben sindsdien SVF ge-update om dit probleem op te lossen\footnote{https://github.com/SVF-tools/SVF/pull/1688, https://github.com/SVF-tools/SVF/pull/1693}. Ze labelen hierbij de functies correct en laten de karakterisatie van de functie het adres van een global teruggeven. Zo aliassen ze zeker en kunnen ze ook correct gekleurd worden. 
+
+Verder vonden ten slotte nog een probleem in de constructie van de points-to sets. SVF laat voor sommige globals de link vallen tussen het element in de set en de overeenkomstige LLVM IR value. Hierdoor kunnen we de set niet volledig omvormen naar een verzameling van kleuren. Dit resulteert dus in unsoundness aangezien hierdoor sets kleuren missen. We hebben dit ook gemald bij SVF maar nog respons ontvangen.
+
+Naast deze resultaten heeft PTAsan nog lange reeks aan unsound accesses gelogd 
 
 \section{Conclusie}
 
